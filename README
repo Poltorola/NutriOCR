@@ -1,0 +1,28 @@
+# NutriOCR
+
+NutriOCR is a capstone project that explores OCR-based calorie tracking from food packaging labels.
+Made by Olga Doboler, OPIT BCs in Computer Science student.
+
+## Technologies
+
+- Python
+- PaddleOCR 3.3.3 (PPStructureV3)
+- PaddlePaddle 3.2.0 (CPU config)
+- OpenAI Vision API (gpt-5)
+- Ollama (Gemma3 Vision)
+
+## Project Status
+
+Early prototype.
+
+Current functionality:
+- Process food label images
+- Extract text using OCR
+- Save OCR results to text files
+
+## Running
+
+Create a virtual environment and install dependencies:
+
+```bash
+pip install -r requirements.txt
