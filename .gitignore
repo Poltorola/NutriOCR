@@ -19,7 +19,7 @@ Thumbs.db
 
 # Project data
 input_photos/
-results/
+results_*/
 
 # Logs
 *.log

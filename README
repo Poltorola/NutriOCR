@@ -9,7 +9,14 @@ Made by Olga Doboler, OPIT BCs in Computer Science student.
 - PaddleOCR 3.3.3 (PPStructureV3)
 - PaddlePaddle 3.2.0 (CPU config)
 - OpenAI Vision API (gpt-5)
-- Ollama (Gemma3 Vision)
+- Ollama (Gemma3 Vision, 12b, 27b)
+
+# Hardware
+
+- CPU: Intel(R) Core(TM) i3-14100F
+- GPU: NVIDIA GeForce RTX 5060 Ti
+- Memory: 558 gb
+- Internet: Ethernet
 
 ## Project Status
 
@@ -17,8 +24,15 @@ Early prototype.
 
 Current functionality:
 - Process food label images
-- Extract text using OCR
-- Save OCR results to text files
+- Extract text using PaddleOCR (on CPU) / Gemma12b / Gemma72b / gpt-5
+- Save the results to md files
+- verificator.py verifies transcripted results upon objective values
+- model_scores.md keeps the results: accuracy, expenses
+
+## Obvious TODO
+- Forgor mass info search, should add it
+- verificator.py is not accurate
+- add time measuring!
 
 ## Running
 
