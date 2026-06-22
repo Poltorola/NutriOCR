@@ -1,14 +1,24 @@
 
+# Verificator checks each text/md file in <model>_results folder and assesses recognition accuracy.
+
+# Reference values (14pics lables, june dataset) are provided by me. 
+# Later for getting reference values might implement: barcode search / web or databases search.
+# Verificator is strict: "-1.0" or "1.0g" instead of "1.0 g" are incorrect (despite being close)
+# If model misses one value out of [3*macronutrients, energy, mass] recognition is considered incorrect.
+
 import re
 from pathlib import Path
 from tqdm import tqdm
 
+### ------------------------------ Reference Values ---------------------------------------------- ###
 
 NUTRIENT_KEYWORDS = {
-    "kcal": ["kcal", "energy", "energetic", "energetic value", "энергетическая ценность", "пищевая ценность"],
+    "kcal": ["kcal", "energy", "energetic", "energetic value", "энергетическая ценность", "пищевая ценность", "ккал"],
     "prots": ["protein", "proteins", "белки", "белоктар"],
     "fats": ["fat", "fats", "жиры", "майлар"],
-    "carbs": ["carbohydrate", "carbohydrates", "carbs", "углеводы", "көмірсулар"],
+    "carbs": ["carbohydrate", "carbohydrates", "carbs", "углеводы", "көмірсулар", "Г"],
+    "mass" : ["g", "gram", "grams", "граммы", "грамм", "г"],
+    "volume" : ["ml", "l", "мл", "л"]
 }
 
 verified_nutrients = {
@@ -46,7 +56,6 @@ verified_nutrients = {
         "kcal": "143",
         "prots": "16",
         "fats": "10",
-        "carbs": "-"
     },
     "milk": {
         "kcal": "59",
@@ -81,14 +90,14 @@ verified_nutrients = {
     "softcheese": {
         "kcal": "198",
         "prots": "7,8",
-        "fats": "17",
+        "fats": "17,0",
         "carbs": "3,5"
     },
     "waffle": {
         "kcal": "550",
-        "prots": "20",
-        "fats": "32",
-        "carbs": "45"
+        "prots": "20,0",
+        "fats": "32,0",
+        "carbs": "45,0"
     },
     "test": {
         "kcal": "42",
@@ -98,7 +107,7 @@ verified_nutrients = {
     }
 }
 
-model = "gpt-5" #  "Gemma27b" "Gemma12b"   "PaddleOCR" "gpt-5"   constant to change model 
+model = "PaddleOCR"  #  "Gemma27b" "Gemma12b"   "PaddleOCR" "gpt-5"   constant to change model 
 
 RESULTS_DIRS = {
     "Gemma27b": "/home/k3l/projects/NutriOCR/results_gemma27b",
@@ -115,7 +124,7 @@ correct_transcriptions = {0 : []}     # amount : [names] of correctly recognized
 incorrect_transcriptions = {0 : []}   # amount : [names] of incorrectly recognized photos.
 
 
-### ---------------------- fetches transcripted values and compares them to verified ones------------------- ###
+### ------------------------------- Values Comparison ------------------------------------- ###
 
 def value_found(text, value, keywords):
     escaped_value = re.escape(value)
@@ -123,19 +132,23 @@ def value_found(text, value, keywords):
     if "," in value:
         escaped_value = escaped_value.replace(",", r"[,.]") # 1.1 and 1,1 both correct
 
-    keyword_pattern = "|".join(re.escape(k) for k in keywords)  # regular variables magic...
+    keyword_pattern = "|".join(re.escape(k) for k in sorted(keywords, key=len, reverse=True))  # regular variables magic...
 
-    pattern_1 = rf"({keyword_pattern}).{{0,30}}(?<!\d){escaped_value}(?!\d)"    # ???
-    pattern_2 = rf"(?<!\d){escaped_value}(?!\d).{{0,30}}({keyword_pattern})"
+    text = re.sub(r"\s+", " ", text.lower())
+
+    value_pattern = rf"(?<![\d.,]){escaped_value}(?![\d.,])"
+
+    pattern_1 = rf"({keyword_pattern}).{{0,100}}{value_pattern}"
+    pattern_2 = rf"{value_pattern}.{{0,100}}({keyword_pattern})"
 
     return (
-        re.search(pattern_1, text, re.IGNORECASE) is not None
+        re.search(pattern_1, text, re.IGNORECASE) is not None 
         or re.search(pattern_2, text, re.IGNORECASE) is not None
     )
 
 
 
-### ---------------------------------------- Tracks the score ---------------------------------------------- ###
+### ---------------------------------------- Score Tracking ---------------------------------------------- ###
 
 def verify():
     
@@ -170,6 +183,10 @@ def verify():
             if value_found(text, correct_value, keywords):
                 file_score += 1
             else:
+                print(
+                    f"{product_name}: missing "
+                    f"{nutrient_name} = {correct_value}"
+                )
                 missing_values.append(f"{nutrient_name}: {correct_value}")
 
 
@@ -196,7 +213,7 @@ def verify():
     )
 
 
-### -------------------------------- Writes the score into model_scores.md----------------------------------- ###
+### -------------------------------- Writes the score into model_scores.md ----------------------------------- ###
 
 def write_report(
     total_score,
@@ -209,7 +226,7 @@ def write_report(
 
     report_lines = []
 
-    report_lines.append(f"# Model scores: {model}")
+    report_lines.append(f"# ---------------------- Model scores: {model} ------------------------------- #")
     report_lines.append("")
     report_lines.append(f"Total score: **{total_score}/{max_score}**")
     report_lines.append(f"Accuracy: **{percent}%**")
@@ -245,7 +262,7 @@ def write_report(
 verify()
 
 
-# Lable info transcripted by my human eyes: 
+# Lable info transcripted by my hooman eyes: 
 
 # Name             Cal  prots  fats   carbs
 
