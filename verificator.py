@@ -7,8 +7,14 @@
 # If model misses one value out of [3*macronutrients, energy, mass] recognition is considered incorrect.
 
 import re
+import json
 from pathlib import Path
-from tqdm import tqdm
+
+try:
+    from tqdm import tqdm
+except ModuleNotFoundError:
+    def tqdm(iterable):
+        return iterable
 
 ### ------------------------------ Reference Values ---------------------------------------------- ###
 
@@ -55,7 +61,7 @@ verified_nutrients = {
     "metat": {
         "kcal": "143",
         "prots": "16",
-        "fats": "10",
+        "fats": "10"
     },
     "milk": {
         "kcal": "59",
@@ -106,105 +112,240 @@ verified_nutrients = {
         "carbs": "10,6"
     }
 }
+# verified_nutrients = Path("/home/k3l/projects/NutriOCR/verified_nutrients.json)
 
-model = "PaddleOCR"  #  "Gemma27b" "Gemma12b"   "PaddleOCR" "gpt-5"   constant to change model 
+KEY_ALIASES = {
+    "protein_g": "prots",
+    "proteins_g": "prots",
+    "prots": "prots",
+    "fat_g": "fats",
+    "fats_g": "fats",
+    "fats": "fats",
+    "carbohydrates_g": "carbs",
+    "carbs_g": "carbs",
+    "carbs": "carbs",
+    "kcal": "kcal",
+    "calories": "kcal",
+    "energy_kcal": "kcal",
+    "net_weight_g": "mass",
+    "mass": "mass",
+    "volume_ml": "volume",
+    "volume": "volume",
+}
+
+
+model = "PaddleOCR"  # "Gemma27b"  "Gemma12b"   "PaddleOCR" "gpt-5" "gpt-5-cropped"   constant to change model 
+
 
 RESULTS_DIRS = {
     "Gemma27b": "/home/k3l/projects/NutriOCR/results_gemma27b",
     "Gemma12b": "/home/k3l/projects/NutriOCR/results_gemma12b",
-    "PaddleOCR": "/home/k3l/projects/NutriOCR/results_paddleocr",
-    "gpt-5": "/home/k3l/projects/NutriOCR/results_gpt5"
+    "PaddleOCR": "/home/k3l/projects/NutriOCR/results_json_paddleocr",
+    "gpt-5": "/home/k3l/projects/NutriOCR/results_gpt5",
+    "gpt-5-cropped": "/home/k3l/projects/NutriOCR/results_gpt5_cropped"
 }
 results_dir = Path(RESULTS_DIRS[model])
 model_scores_path = Path("/home/k3l/projects/NutriOCR/model_scores.md")
 
 score = 0
-model_score = {model : score}         # every correct (kcal, nutrient) value: score = +1
-correct_transcriptions = {0 : []}     # amount : [names] of correctly recognized photos. file is correct if all four values are correct
-incorrect_transcriptions = {0 : []}   # amount : [names] of incorrectly recognized photos.
+model_score = {model : score}  # every correct (kcal, nutrient) value: score = +1
+correct_transcriptions = []    # amount : [names] of correctly recognized photos. file is correct if all four values are correct
+incorrect_transcriptions = []  # amount : [names] of incorrectly recognized photos.
+
+
+
+### ------------------------------- Internal Helpers ------------------------------------- ###
+
+def _load_json(content):        # json parsing
+    if isinstance(content, (str, Path)):
+        return json.loads(Path(content).read_text(encoding="utf-8"))
+    return content
+
+
+def _canonical_values(content): # ensures dict keys are unified: fat_g => fats
+    values = {}
+
+    for key, value in content.items():
+        canonical_key = KEY_ALIASES.get(key)
+        if canonical_key:
+            values[canonical_key] = value
+
+    nutrition = content.get("nutrition")
+    if isinstance(nutrition, dict):
+        for key, value in nutrition.items():
+            canonical_key = KEY_ALIASES.get(key)
+            if canonical_key:
+                values[canonical_key] = value
+
+    return values
+
+
+def _normalize_value(value):    # prepares text
+    if value is None:
+        return None
+
+    if isinstance(value, str):
+        value = value.strip().replace(",", ".")
+        number_match = re.search(r"-?\d+(?:\.\d+)?", value)
+        if number_match:
+            value = number_match.group(0)
+
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return str(value).strip().lower()
+
+
+def _product_name(text_json, text_source=None): # fetches product name
+    for field in ("image", "product_name"):
+        value = text_json.get(field)
+        if value:
+            return Path(str(value)).stem
+
+    if isinstance(text_source, (str, Path)):
+        return Path(text_source).stem
+
+    return None
+
 
 
 ### ------------------------------- Values Comparison ------------------------------------- ###
 
-def value_found(text, value, keywords):
-    escaped_value = re.escape(value)
+def _values_equal(actual, expected):    # compares normalized values
+    actual = _normalize_value(actual)
+    expected = _normalize_value(expected)
 
-    if "," in value:
-        escaped_value = escaped_value.replace(",", r"[,.]") # 1.1 and 1,1 both correct
+    if actual is None or expected is None:
+        return actual is expected
 
-    keyword_pattern = "|".join(re.escape(k) for k in sorted(keywords, key=len, reverse=True))  # regular variables magic...
+    if isinstance(actual, float) and isinstance(expected, float):
+        return abs(actual - expected) < 1e-9
 
-    text = re.sub(r"\s+", " ", text.lower())
-
-    value_pattern = rf"(?<![\d.,]){escaped_value}(?![\d.,])"
-
-    pattern_1 = rf"({keyword_pattern}).{{0,100}}{value_pattern}"
-    pattern_2 = rf"{value_pattern}.{{0,100}}({keyword_pattern})"
-
-    return (
-        re.search(pattern_1, text, re.IGNORECASE) is not None 
-        or re.search(pattern_2, text, re.IGNORECASE) is not None
-    )
+    return actual == expected
 
 
+def value_found(text, value, keywords): # REDUNDANT: compares values based on regex, used for txt or md files
+#     escaped_value = re.escape(value)
 
-### ---------------------------------------- Score Tracking ---------------------------------------------- ###
+#     if "," in value:
+#         escaped_value = escaped_value.replace(",", r"[,.]") # 1.1 and 1,1 both correct
 
-def verify():
-    
-    total_score = 0     # every correct (kcal, nutrient) value: score = +1
+#     keyword_pattern = "|".join(re.escape(k) for k in sorted(keywords, key=len, reverse=True))  # regular variables magic...
+
+#     text = re.sub(r"\s+", " ", text.lower())
+
+#     value_pattern = rf"(?<![\d.,]){escaped_value}(?![\d.,])"
+
+#     pattern_1 = rf"({keyword_pattern}).{{0,100}}{value_pattern}"
+#     pattern_2 = rf"{value_pattern}.{{0,100}}({keyword_pattern})"
+
+#     return (
+#         re.search(pattern_1, text, re.IGNORECASE) is not None 
+#         or re.search(pattern_2, text, re.IGNORECASE) is not None
+#     )
+    pass
+
+
+def verify_content(text_json, verified_content): # compares two JSONs
+    text_source = text_json
+    text_json = _load_json(text_json)
+    verified_content = _load_json(verified_content)
+
+    product_name = _product_name(text_json, text_source)
+    expected_values = verified_content.get(product_name, verified_content)
+    actual_values = _canonical_values(text_json)
+    expected_values = _canonical_values(expected_values)
+
+    correct_values = []
+    missed_values = []
+
+    for nutrient, expected_value in expected_values.items():
+        if expected_value is None or nutrient not in actual_values:
+            continue
+
+        actual_value = actual_values[nutrient]
+
+        if _values_equal(actual_value, expected_value):
+            correct_values.append(f"{nutrient}: {expected_value}")
+        else:
+            missed_values.append(
+                f"{nutrient}: expected {expected_value}, got {actual_value}"
+            )
+
+    return len(missed_values) == 0, correct_values, missed_values
+
+
+def verify_md(file_path): # REDUNDANT: was used to verify .md until all output was changed into .json
+
+    # text = file_path.read_text(encoding="utf-8").lower()  # reads file content
+    # product_name = product_name = file_path.stem
+
+    # file_score = 0
+    # missing_values = []
+
+
+    # for nutrient_name, correct_value in expected_values.items(): # calls search
+    #     keywords = NUTRIENT_KEYWORDS[nutrient_name]
+
+    #     if value_found(text, correct_value, keywords):
+    #         file_score += 1
+    #     else:
+    #         print(
+    #             f"{product_name}: missing "
+    #             f"{nutrient_name} = {correct_value}"
+    #         )
+    #         missing_values.append(f"{nutrient_name}: {correct_value}")
+
+    # detailed_results[product_name] = {
+    #     "score": file_score,
+    #     "max_score": file_max_score,
+    #     "missing": missing_values,
+    # }
+
+    # return (file_score)
+    pass
+
+
+
+### -------------------------- Score Calculation ---------------------------------------------- ###
+
+def score_results(results_dir, verified_nutrients): # how many files are fully correct?
+    results_dir = Path(results_dir)
+    verified_nutrients = _load_json(verified_nutrients)
+
+    total_score = 0
     max_score = 0
-
-    correct_transcriptions = []   # names of correctly recognized photos. file is correct if all four values are correct
-    incorrect_transcriptions = [] # names of incorrectly recognized photos.
+    correct_transcriptions = []
+    incorrect_transcriptions = []
     detailed_results = {}
 
-
-    for file_path in tqdm(list(results_dir.glob("*.md"))):  # progress bar to track operation state
+    for file_path in tqdm(list(results_dir.glob("*.json"))):
         product_name = file_path.stem
 
         if product_name not in verified_nutrients:
-            print(f"Skipping unknown file: {file_path.name}") # exclude non .md
+            print(f"Skipping unknown file: {file_path.name}")
             continue
 
+        is_correct, correct_values, missed_values = verify_content(
+            file_path,
+            verified_nutrients,
+        )
 
-        text = file_path.read_text(encoding="utf-8").lower()  # reads file content
-
-        expected_values = verified_nutrients[product_name]
-
-        file_score = 0
-        file_max_score = len(expected_values)
-        missing_values = []
-
-
-        for nutrient_name, correct_value in expected_values.items(): # calls search
-            keywords = NUTRIENT_KEYWORDS[nutrient_name]
-
-            if value_found(text, correct_value, keywords):
-                file_score += 1
-            else:
-                print(
-                    f"{product_name}: missing "
-                    f"{nutrient_name} = {correct_value}"
-                )
-                missing_values.append(f"{nutrient_name}: {correct_value}")
-
-
-        total_score += file_score       # detailed records about model's accuracy
-        max_score += file_max_score
-
-        detailed_results[product_name] = {
-            "score": file_score,
-            "max_score": file_max_score,
-            "missing": missing_values,
-        }
-
-        if file_score == file_max_score:
+        max_score += 1
+        if is_correct:
+            total_score += 1
             correct_transcriptions.append(product_name)
         else:
             incorrect_transcriptions.append(product_name)
 
-    write_report(
+        detailed_results[product_name] = {
+            "score": 1 if is_correct else 0,
+            "max_score": 1,
+            "correct": correct_values,
+            "missing": missed_values,
+        }
+
+    return (
         total_score,
         max_score,
         correct_transcriptions,
@@ -213,7 +354,8 @@ def verify():
     )
 
 
-### -------------------------------- Writes the score into model_scores.md ----------------------------------- ###
+
+### ----------------------- Writes the score into model_scores.md ----------------------------------- ###
 
 def write_report(
     total_score,
@@ -259,7 +401,16 @@ def write_report(
         f.write("\n".join(report_lines))
 
 
-verify()
+
+### ------------------------------ Main loop ---------------------------------------------- ###
+
+if __name__ == "__main__":
+    total_score, max_score, correct, incorrect, details = score_results(
+        results_dir,
+        verified_nutrients
+    )
+
+    write_report(total_score, max_score, correct, incorrect, details)
 
 
 # Lable info transcripted by my hooman eyes: 

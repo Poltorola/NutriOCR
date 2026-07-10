@@ -94,6 +94,8 @@ def measure_runtime(func, *args, **kwargs): # timer
 timing_results = {}
 
 
+### ------------------------------------ Main Loop ------------------------------------ ###
+
 for image in tqdm(os.listdir(IMAGE_DIR_PATH)):                  # tqdm for progress bar
     if not image.lower().endswith((".jpg", ".jpeg", ".png")):
         continue

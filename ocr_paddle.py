@@ -45,6 +45,7 @@ def process_image(image_path):
     return output_file
 
 
+
 ### ------------------------------------ Main Loop ------------------------------------ ###
 
 for image_path in input_dir.glob("*"):
