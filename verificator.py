@@ -134,23 +134,13 @@ KEY_ALIASES = {
 }
 
 
-model = "PaddleOCR"  # "Gemma27b"  "Gemma12b"   "PaddleOCR" "gpt-5" "gpt-5-cropped"   constant to change model 
-
-
 RESULTS_DIRS = {
-    "Gemma27b": "/home/k3l/projects/NutriOCR/results_gemma27b",
     "Gemma12b": "/home/k3l/projects/NutriOCR/results_gemma12b",
-    "PaddleOCR": "/home/k3l/projects/NutriOCR/results_json_paddleocr",
+    "Gemma27b": "/home/k3l/projects/NutriOCR/results_gemma27b",
     "gpt-5": "/home/k3l/projects/NutriOCR/results_gpt5",
-    "gpt-5-cropped": "/home/k3l/projects/NutriOCR/results_gpt5_cropped"
+    "PaddleOCR": "/home/k3l/projects/NutriOCR/results_json_paddleocr",
 }
-results_dir = Path(RESULTS_DIRS[model])
 model_scores_path = Path("/home/k3l/projects/NutriOCR/model_scores.md")
-
-score = 0
-model_score = {model : score}  # every correct (kcal, nutrient) value: score = +1
-correct_transcriptions = []    # amount : [names] of correctly recognized photos. file is correct if all four values are correct
-incorrect_transcriptions = []  # amount : [names] of incorrectly recognized photos.
 
 
 
@@ -319,16 +309,25 @@ def score_results(results_dir, verified_nutrients): # how many files are fully c
     incorrect_transcriptions = []
     detailed_results = {}
 
-    for file_path in tqdm(list(results_dir.glob("*.json"))):
-        product_name = file_path.stem
+    json_files = {file_path.stem: file_path for file_path in results_dir.glob("*.json")}
 
-        if product_name not in verified_nutrients:
-            print(f"Skipping unknown file: {file_path.name}")
+    for product_name, expected_values in verified_nutrients.items():
+        file_path = json_files.get(product_name)
+
+        if file_path is None:
+            max_score += 1
+            incorrect_transcriptions.append(product_name)
+            detailed_results[product_name] = {
+                "score": 0,
+                "max_score": 1,
+                "correct": [],
+                "missing": [f"JSON file is missing: {product_name}.json"],
+            }
             continue
 
         is_correct, correct_values, missed_values = verify_content(
             file_path,
-            verified_nutrients,
+            expected_values,
         )
 
         max_score += 1
@@ -345,6 +344,9 @@ def score_results(results_dir, verified_nutrients): # how many files are fully c
             "missing": missed_values,
         }
 
+    for product_name in sorted(set(json_files) - set(verified_nutrients)):
+        print(f"Skipping unknown file: {json_files[product_name].name}")
+
     return (
         total_score,
         max_score,
@@ -358,6 +360,7 @@ def score_results(results_dir, verified_nutrients): # how many files are fully c
 ### ----------------------- Writes the score into model_scores.md ----------------------------------- ###
 
 def write_report(
+    model,
     total_score,
     max_score,
     correct_transcriptions,
@@ -405,12 +408,22 @@ def write_report(
 ### ------------------------------ Main loop ---------------------------------------------- ###
 
 if __name__ == "__main__":
-    total_score, max_score, correct, incorrect, details = score_results(
-        results_dir,
-        verified_nutrients
-    )
+    for model, results_dir in RESULTS_DIRS.items():
+        total_score, max_score, correct, incorrect, details = score_results(
+            results_dir,
+            verified_nutrients
+        )
 
-    write_report(total_score, max_score, correct, incorrect, details)
+        write_report(
+            model,
+            total_score,
+            max_score,
+            correct,
+            incorrect,
+            details,
+        )
+
+        print(f"{model}: {total_score}/{max_score}")
 
 
 # Lable info transcripted by my hooman eyes: 

@@ -26,24 +26,39 @@ NUTRIENT_KEYWORDS = {
 }
 NUMBER_PATTERN = r"\d+(?:[,.]\d+)?"
 
-NUTRITION_SCHEMA = {        # json schema
+NUTRITION_SCHEMA = {        # same model-output schema as in ocr_gpt5.py
     "type": "object",
+    "additionalProperties": False,
     "properties": {
-        "kcal": {"type": ["number", "null"]},
-        "prots": {"type": ["number", "null"]},
-        "fats": {"type": ["number", "null"]},
-        "carbs": {"type": ["number", "null"]},
-        "basis": {
-            "type": ["string", "null"],
-            "enum": ["per_100g", "per_100ml", "per_serving", None]
+        "recognized_text": {"type": "string"},
+        "product_name": {"type": ["string", "null"]},
+        "company_name": {"type": ["string", "null"]},
+        "barcode": {"type": ["string", "null"]},
+        "net_weight_g": {"type": ["number", "null"]},
+        "volume_ml": {"type": ["number", "null"]},
+        "nutrition": {
+            "type": "object",
+            "additionalProperties": False,
+            "properties": {
+                "kcal": {"type": ["number", "null"]},
+                "protein_g": {"type": ["number", "null"]},
+                "fat_g": {"type": ["number", "null"]},
+                "saturated_fat_g": {"type": ["number", "null"]},
+                "carbs_g": {"type": ["number", "null"]},
+                "sugars_g": {"type": ["number", "null"]},
+                "fiber_g": {"type": ["number", "null"]},
+                "salt_g": {"type": ["number", "null"]}
+            },
+            "required": [
+                "kcal", "protein_g", "fat_g", "saturated_fat_g",
+                "carbs_g", "sugars_g", "fiber_g", "salt_g"
+            ]
         },
-        "notes": {
-            "type": "array",
-            "items": {"type": "string"}
-        }
     },
-    "required": ["kcal", "prots", "fats", "carbs", "basis", "notes"],
-    "additionalProperties": False
+    "required": [
+        "recognized_text", "product_name", "company_name", "barcode",
+        "net_weight_g", "volume_ml", "nutrition"
+    ]
 }
 
 incorrect_transcriptions = []
@@ -178,28 +193,44 @@ def txt_to_json_llm(text_path):     # promts llm to convert text into json
             {   # prompt
                 "role": "system",               
                 "content": (
-                    "You extract nutrition facts from OCR text. "
-                    "Return only values that are clearly present in the text. "
-                    "Do not guess. If a value is missing or unclear, return null. "
-                    "Convert comma decimals to dot decimals."
+                    "You extract structured product-label information from multilingual OCR text. "
+                    "Use only information clearly present in the supplied OCR text. "
+                    "Do not guess or invent missing values."
                 )
             },
             {
                 "role": "user",
                 "content": f"""
-Extract nutrition information from this OCR text.
+Extract product and nutrition information from this OCR text.
 
 Rules:
-- kcal = calories / energy value / энергетическая ценность / ккал
-- prots = proteins / белки / ақуыз
-- fats = fats / жиры / май
-- carbs = carbohydrates / углеводы / көмірсу
-- Prefer values per 100 g or per 100 ml.
-- If values are for 100 g, basis = "per_100g".
-- If values are for 100 ml, basis = "per_100ml".
-- If only serving values are visible, basis = "per_serving".
-- If basis is unclear, basis = null.
-- Return null for missing values.
+- Copy the supplied OCR text verbatim into recognized_text; do not reconstruct unreadable fragments.
+- The label may contain any language or several parallel translations.
+- Use a clearer equivalent in another language on the same label to recover poorly recognized fields.
+- Cross-check translations and repeated nutrition panels, but do not combine values from different products or unrelated sections.
+- Extract the visible product name, company/manufacturer name, and barcode.
+- Return barcode as digits only, preserving leading zeros.
+- Extract net product weight into net_weight_g and volume into volume_ml.
+- Convert kilograms to grams and liters to milliliters when necessary.
+- Do not confuse a nutrition-table basis such as 100 g or 100 ml with net weight or volume.
+- Return nutrition values per 100 g when the OCR text uses a mass basis, or per 100 ml when it uses a volume basis.
+- Both per-100-g and per-100-ml nutrition values are valid.
+- Nutrition tables may show adjacent columns for per 100 g/ml, per serving, per package, and percent daily intake.
+- Read the column headers carefully and select the explicitly labeled per-100-g or per-100-ml column.
+- Never take values from a serving, whole-package, or percent-daily-intake column when a per-100-g/ml column is present.
+- If no per-100-g/ml column exists and values are per serving, convert them to per 100 g when the serving mass is visible, or to per 100 ml when the serving volume is visible.
+- Do not convert between a mass basis and a volume basis unless product density is explicitly provided.
+- If a serving value cannot be converted to either basis without guessing, return null.
+- Energy may be printed in both kJ and kcal, often next to each other. The kcal field must contain kilocalories, never the kJ number.
+- When both are present, copy the explicitly labeled kcal value. If only kJ is clearly present, convert it to kcal by dividing by 4.184.
+- kcal means calories / energy value / энергетическая ценность / ккал.
+- protein_g means proteins / белки / ақуыз.
+- fat_g means total fats / жиры / май.
+- carbs_g means carbohydrates / углеводы / көмірсу.
+- Extract saturated fat, sugars, fiber, and salt only when clearly present.
+- All nutrition, weight, and volume values must be JSON numbers without units or text.
+- Convert comma decimal separators to dots and do not round values.
+- Return null for every missing or uncertain scalar value.
 - Do not invent values.
 
 OCR text:
@@ -220,96 +251,6 @@ OCR text:
 
 
 
-# ---------------------- JSON structure validation ---------------------------------------- #
-
-def verify_json(text_json):
-    required_fields = ["kcal", "prots", "fats", "carbs", "basis", "notes"]
-
-    validation = {
-        "passed": True,
-        "warnings": [],
-        "errors": []
-    }
-
-    for field in required_fields:   # check required fields
-        if field not in text_json:
-            validation["passed"] = False
-            validation["errors"].append(f"Missing required field: {field}")
-
-    if validation["errors"]:                    # stop if structure too broken
-        text_json["validation"] = validation
-
-        return text_json
-
-
-    nutrient_fields = ["kcal", "prots", "fats", "carbs"] 
-
-    plausible_ranges = {
-        "kcal": (0, 1000),
-        "prots": (0, 100),
-        "fats": (0, 100),
-        "carbs": (0, 100)
-    }
-
-    for field in nutrient_fields:
-        value = text_json[field]
-
-        if value is None:
-            validation["warnings"].append(f"{field} is missing.")
-            continue
-
-        if not isinstance(value, (int, float)):
-            validation["passed"] = False
-            validation["errors"].append(
-                f"{field} must be a number or null, got {type(value).__name__}."
-            )
-            continue
-
-        min_value, max_value = plausible_ranges[field]
-
-        if value < min_value or value > max_value:
-            validation["warnings"].append(
-                f"{field}={value} is outside plausible range {min_value}-{max_value}."
-            )
-
-    # check basis
-    allowed_basis = ["per_100g", "per_100ml", "per_serving", None]
-
-    if text_json["basis"] not in allowed_basis:
-        validation["passed"] = False
-        validation["errors"].append(
-            f"basis must be one of {allowed_basis}, got {text_json['basis']}."
-        )
-
-    # check notes
-    if not isinstance(text_json["notes"], list):
-        validation["passed"] = False
-        validation["errors"].append("notes must be a list.")
-
-    # optional calorie consistency check
-    kcal = text_json["kcal"]
-    prots = text_json["prots"]
-    fats = text_json["fats"]
-    carbs = text_json["carbs"]
-
-    if all(isinstance(v, (int, float)) for v in [kcal, prots, fats, carbs]):
-        estimated_kcal = prots * 4 + fats * 9 + carbs * 4
-
-        difference = abs(kcal - estimated_kcal)
-
-        if difference > 80:
-            validation["warnings"].append(
-                f"Calories may be inconsistent: kcal={kcal}, estimated from macros={round(estimated_kcal, 1)}."
-            )
-
-    if validation["errors"]:
-        validation["passed"] = False
-
-    text_json["validation"] = validation
-
-    return text_json
-
-
 ### ------------------------------ Main loop ---------------------------------------------- ###
 
 if __name__ == "__main__":
@@ -318,7 +259,15 @@ if __name__ == "__main__":
 
         # json_data = txt_to_json_algo(text)
         json_data = txt_to_json_llm(file_path)
-        json_data = verify_json(json_data)
+        json_data["image"] = next(
+            (
+                image_path.name
+                for image_path in Path("input_photos").glob(f"{file_path.stem}.*")
+                if image_path.suffix.lower() in {".jpg", ".jpeg", ".png"}
+            ),
+            file_path.stem,
+        )
+        json_data["model"] = "paddleocr+gpt-5-jsonifier"
 
 
         output_file = output_dir / f"{file_path.stem}.json"
@@ -329,4 +278,3 @@ if __name__ == "__main__":
         )
 
         print(f"Converted: {file_path.name} -> {output_file.name}")
-
