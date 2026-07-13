@@ -1160,6 +1160,8 @@ Average runtime: **26.22** sec
 Total runtime: **367.09** sec
 
 
+RESULTS 13 JULY
+
 # ---------------------- Model scores: Gemma12b ------------------------------- #
 
 Total score: **6/14**
@@ -1487,3 +1489,230 @@ Missing values:
 
 ### test: 1/1
 All values found.
+# Model timing: GPT-5
+
+nutsandseeds.jpg: 21.24 seconds, input tokens: 1431, output tokens: 1903, total tokens: 3334
+redbull.jpg: 25.89 seconds, input tokens: 1431, output tokens: 1659, total tokens: 3090
+bread.jpg: 40.19 seconds, input tokens: 1431, output tokens: 3794, total tokens: 5225
+test.jpg: 29.80 seconds, input tokens: 1711, output tokens: 2896, total tokens: 4607
+softcheese.jpg: 26.77 seconds, input tokens: 1431, output tokens: 2107, total tokens: 3538
+cookie.jpg: 29.01 seconds, input tokens: 1431, output tokens: 2446, total tokens: 3877
+cheese.jpg: 16.51 seconds, input tokens: 1711, output tokens: 1186, total tokens: 2897
+metat.jpg: 36.60 seconds, input tokens: 1431, output tokens: 3527, total tokens: 4958
+carrots.jpg: 23.94 seconds, input tokens: 1711, output tokens: 1842, total tokens: 3553
+waffle.jpg: 48.26 seconds, input tokens: 1431, output tokens: 3534, total tokens: 4965
+milk.jpg: 25.94 seconds, input tokens: 1431, output tokens: 1863, total tokens: 3294
+pesto.jpg: 43.76 seconds, input tokens: 1431, output tokens: 3639, total tokens: 5070
+sausages.jpg: 22.74 seconds, input tokens: 1431, output tokens: 1896, total tokens: 3327
+cocomilk.jpg: 18.38 seconds, input tokens: 1431, output tokens: 1790, total tokens: 3221
+
+Average runtime: **29.22** sec
+Total runtime: **409.02** sec
+
+
+# Model timing: gemma3:27b-it-q4_K_M
+
+nutsandseeds.jpg: 156.81 seconds, prompt tokens: 801, output tokens: 737
+redbull.jpg: 130.90 seconds, prompt tokens: 801, output tokens: 717
+bread.jpg: 108.47 seconds, prompt tokens: 801, output tokens: 566
+test.jpg: 94.30 seconds, prompt tokens: 801, output tokens: 477
+softcheese.jpg: 45.51 seconds, prompt tokens: 801, output tokens: 218
+cookie.jpg: 31.95 seconds, prompt tokens: 801, output tokens: 145
+cheese.jpg: 42.24 seconds, prompt tokens: 801, output tokens: 200
+metat.jpg: 155.39 seconds, prompt tokens: 801, output tokens: 736
+carrots.jpg: 99.80 seconds, prompt tokens: 801, output tokens: 461
+waffle.jpg: 130.45 seconds, prompt tokens: 801, output tokens: 706
+milk.jpg: 203.30 seconds, prompt tokens: 801, output tokens: 1128
+pesto.jpg: 103.38 seconds, prompt tokens: 801, output tokens: 511
+sausages.jpg: 100.72 seconds, prompt tokens: 801, output tokens: 471
+cocomilk.jpg: 92.39 seconds, prompt tokens: 801, output tokens: 428
+
+Average runtime: **106.83** sec
+Total runtime: **1495.62** sec
+
+
+# Model timing: gpt-5
+
+
+# Model timing: gpt-5
+
+
+# Model timing: gpt-5
+
+bread.jpg: 49.17 seconds, input tokens: 2058, output tokens: 3002, total tokens: 5060
+carrots.jpg: 33.56 seconds, input tokens: 2058, output tokens: 3319, total tokens: 5377
+cheese.jpg: 25.90 seconds, input tokens: 2058, output tokens: 1852, total tokens: 3910
+cocomilk.jpg: 22.00 seconds, input tokens: 2058, output tokens: 1803, total tokens: 3861
+cookie.jpg: 29.11 seconds, input tokens: 2058, output tokens: 2211, total tokens: 4269
+metat.jpg: 39.10 seconds, input tokens: 2058, output tokens: 3858, total tokens: 5916
+milk.jpg: 24.08 seconds, input tokens: 2058, output tokens: 1662, total tokens: 3720
+nutsandseeds.jpg: 31.11 seconds, input tokens: 2058, output tokens: 2538, total tokens: 4596
+pesto.jpg: 33.55 seconds, input tokens: 2058, output tokens: 2945, total tokens: 5003
+redbull.jpg: 31.77 seconds, input tokens: 2058, output tokens: 2251, total tokens: 4309
+sausages.jpg: 28.83 seconds, input tokens: 2058, output tokens: 2350, total tokens: 4408
+softcheese.jpg: 27.49 seconds, input tokens: 2058, output tokens: 1754, total tokens: 3812
+test.jpg: 26.75 seconds, input tokens: 2058, output tokens: 2683, total tokens: 4741
+waffle.jpg: 30.10 seconds, input tokens: 2058, output tokens: 2386, total tokens: 4444
+
+Average runtime: **30.89** sec
+Total runtime: **432.51** sec
+
+# Model timing: gemma3:27b-it-q4_K_M
+
+bread.jpg: 182.99 seconds, prompt tokens: 1015, output tokens: 777
+carrots.jpg: 80.85 seconds, prompt tokens: 1015, output tokens: 405
+cheese.jpg: 39.03 seconds, prompt tokens: 1015, output tokens: 188
+cocomilk.jpg: 178.85 seconds, prompt tokens: 1015, output tokens: 917
+cookie.jpg: 29.67 seconds, prompt tokens: 1015, output tokens: 139
+metat.jpg: 71.47 seconds, prompt tokens: 1015, output tokens: 357
+milk.jpg: 127.77 seconds, prompt tokens: 1015, output tokens: 672
+nutsandseeds.jpg: 136.60 seconds, prompt tokens: 1015, output tokens: 600
+pesto.jpg: 144.16 seconds, prompt tokens: 1015, output tokens: 591
+redbull.jpg: 63.58 seconds, prompt tokens: 1015, output tokens: 262
+sausages.jpg: 72.19 seconds, prompt tokens: 1015, output tokens: 275
+softcheese.jpg: 44.93 seconds, prompt tokens: 1015, output tokens: 165
+test.jpg: 231.88 seconds, prompt tokens: 1015, output tokens: 1005
+waffle.jpg: 102.16 seconds, prompt tokens: 1015, output tokens: 446
+
+Average runtime: **107.58** sec
+Total runtime: **1506.14** sec
+
+# Model timing: PaddleOCR
+
+bread.jpg: 338.84 seconds
+carrots.jpg: 180.83 seconds
+cheese.jpg: 124.27 seconds
+cocomilk.jpg: 84.85 seconds
+cookie.jpg: 53.49 seconds
+metat.jpg: 20.54 seconds
+milk.jpg: 36.40 seconds
+nutsandseeds.jpg: 20.05 seconds
+pesto.jpg: 16.44 seconds
+redbull.jpg: 63.40 seconds
+sausages.jpg: 18.78 seconds
+softcheese.jpg: 12.28 seconds
+test.jpg: 18.38 seconds
+waffle.jpg: 20.50 seconds
+
+Average runtime: **72.07** sec
+Total runtime: **1009.04** sec
+
+# Model timing: PaddleOCR
+
+bread.jpg: 53.69 seconds
+carrots.jpg: 15.89 seconds
+cheese.jpg: 15.18 seconds
+cocomilk.jpg: 10.18 seconds
+cookie.jpg: 18.98 seconds
+metat.jpg: 9.56 seconds
+milk.jpg: 17.76 seconds
+nutsandseeds.jpg: 11.56 seconds
+pesto.jpg: 8.11 seconds
+redbull.jpg: 25.49 seconds
+sausages.jpg: 7.58 seconds
+softcheese.jpg: 6.63 seconds
+test.jpg: 7.03 seconds
+waffle.jpg: 8.26 seconds
+
+Average runtime: **15.42** sec
+Total runtime: **215.88** sec
+
+# Model timing: gpt-5
+
+bread.jpg: 32.65 seconds, input tokens: 1498, output tokens: 2576, total tokens: 4074
+carrots.jpg: 17.01 seconds, input tokens: 1778, output tokens: 1665, total tokens: 3443
+cheese.jpg: 17.98 seconds, input tokens: 1778, output tokens: 1779, total tokens: 3557
+cocomilk.jpg: 21.71 seconds, input tokens: 1498, output tokens: 2424, total tokens: 3922
+cookie.jpg: 25.68 seconds, input tokens: 1498, output tokens: 2449, total tokens: 3947
+metat.jpg: 28.24 seconds, input tokens: 1498, output tokens: 2700, total tokens: 4198
+milk.jpg: 34.33 seconds, input tokens: 1498, output tokens: 2945, total tokens: 4443
+nutsandseeds.jpg: 21.52 seconds, input tokens: 1498, output tokens: 2352, total tokens: 3850
+pesto.jpg: 26.32 seconds, input tokens: 1498, output tokens: 2893, total tokens: 4391
+redbull.jpg: 34.88 seconds, input tokens: 1498, output tokens: 3107, total tokens: 4605
+sausages.jpg: 26.92 seconds, input tokens: 1498, output tokens: 2386, total tokens: 3884
+softcheese.jpg: 31.60 seconds, input tokens: 1498, output tokens: 2654, total tokens: 4152
+test.jpg: 27.08 seconds, input tokens: 1778, output tokens: 2836, total tokens: 4614
+waffle.jpg: 33.17 seconds, input tokens: 1498, output tokens: 3225, total tokens: 4723
+
+Average runtime: **27.08** sec
+Total runtime: **379.09** sec
+
+# Model timing: gemma3:27b-it-q4_K_M
+
+bread.jpg: 151.89 seconds, prompt tokens: 1015, output tokens: 636
+carrots.jpg: 91.05 seconds, prompt tokens: 1015, output tokens: 468
+cheese.jpg: 39.61 seconds, prompt tokens: 1015, output tokens: 187
+cocomilk.jpg: 80.05 seconds, prompt tokens: 1015, output tokens: 407
+cookie.jpg: 59.72 seconds, prompt tokens: 1015, output tokens: 301
+metat.jpg: 176.92 seconds, prompt tokens: 1015, output tokens: 922
+milk.jpg: 183.08 seconds, prompt tokens: 1015, output tokens: 958
+nutsandseeds.jpg: 140.98 seconds, prompt tokens: 1015, output tokens: 728
+pesto.jpg: 110.54 seconds, prompt tokens: 1015, output tokens: 574
+redbull.jpg: 88.60 seconds, prompt tokens: 1015, output tokens: 456
+sausages.jpg: 139.06 seconds, prompt tokens: 1015, output tokens: 722
+softcheese.jpg: 66.62 seconds, prompt tokens: 1015, output tokens: 339
+test.jpg: 90.18 seconds, prompt tokens: 1015, output tokens: 463
+waffle.jpg: 130.65 seconds, prompt tokens: 1015, output tokens: 680
+
+Average runtime: **110.64** sec
+Total runtime: **1548.94** sec
+
+# Model timing: gemma3:12b-it-q8_0
+
+bread.jpg: 45.46 seconds, prompt tokens: 1015, output tokens: 643
+carrots.jpg: 20.06 seconds, prompt tokens: 1015, output tokens: 518
+cheese.jpg: 10.68 seconds, prompt tokens: 1015, output tokens: 252
+cocomilk.jpg: 17.82 seconds, prompt tokens: 1015, output tokens: 460
+cookie.jpg: 21.18 seconds, prompt tokens: 1015, output tokens: 546
+metat.jpg: 35.62 seconds, prompt tokens: 1015, output tokens: 969
+milk.jpg: 31.23 seconds, prompt tokens: 1015, output tokens: 835
+nutsandseeds.jpg: 24.20 seconds, prompt tokens: 1015, output tokens: 640
+pesto.jpg: 21.68 seconds, prompt tokens: 1015, output tokens: 570
+redbull.jpg: 19.83 seconds, prompt tokens: 1015, output tokens: 510
+sausages.jpg: 30.45 seconds, prompt tokens: 1015, output tokens: 822
+softcheese.jpg: 19.52 seconds, prompt tokens: 1015, output tokens: 507
+test.jpg: 19.01 seconds, prompt tokens: 1015, output tokens: 493
+waffle.jpg: 26.57 seconds, prompt tokens: 1015, output tokens: 709
+
+Average runtime: **24.52** sec
+Total runtime: **343.31** sec
+
+# Model timing: paddleocr+gpt-5-jsonifier
+
+bread.jpg: 127.62 seconds
+carrots.jpg: 31.53 seconds
+cheese.jpg: 47.43 seconds
+cocomilk.jpg: 39.17 seconds
+cookie.jpg: 54.55 seconds
+metat.jpg: 38.13 seconds
+milk.jpg: 60.11 seconds
+nutsandseeds.jpg: 34.92 seconds
+pesto.jpg: 46.85 seconds
+redbull.jpg: 61.27 seconds
+sausages.jpg: 60.85 seconds
+softcheese.jpg: 11.31 seconds
+test.jpg: 42.06 seconds
+waffle.jpg: 38.95 seconds
+
+Average runtime: **49.62** sec
+Total runtime: **694.75** sec
+
+# Model timing: paddleocr+gpt-5-jsonifier
+
+bread.jpg: 106.70 seconds
+carrots.jpg: 30.33 seconds
+cheese.jpg: 26.22 seconds
+cocomilk.jpg: 33.21 seconds
+cookie.jpg: 83.06 seconds
+metat.jpg: 68.47 seconds
+milk.jpg: 65.65 seconds
+nutsandseeds.jpg: 37.75 seconds
+pesto.jpg: 31.28 seconds
+redbull.jpg: 53.72 seconds
+sausages.jpg: 54.88 seconds
+softcheese.jpg: 11.02 seconds
+test.jpg: 39.72 seconds
+waffle.jpg: 35.33 seconds
+
+Average runtime: **48.38** sec
+Total runtime: **677.34** sec

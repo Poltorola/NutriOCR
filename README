@@ -20,19 +20,22 @@ Made by Olga Dobler, OPIT BCs in Computer Science student.
 
 ## Project Status
 
-Early prototype.
+Working text recognition pipeline
 
 Current functionality:
 - Process food label images
-- Extract text using PaddleOCR (on CPU) / Gemma12b / Gemma72b / gpt-5
-- Save the results to md files
+- Extract text using PaddleOCR (on CPU) / Gemma12b & Gemma72b (on GPU) / gpt-5 (via openAI API)
+Source files: ocr_paddle.py ocr_gemma3.py ocr_gpt5.py
+- Save the results into json files
+- For PaddleOCR: converts .md output into json 
+Source file: jsonifier.py
 - verificator.py verifies transcripted results upon objective values
 - model_scores.md keeps the results: accuracy, expenses
 
 ## Obvious TODO
-- Forgor mass info search, should add it
-- verificator.py is not accurate
-- add time measuring!
+- Barcode scanning implementation
+- Would be good to save model scores in separate files for each run date
+- Unify image preparation (crop grayscale etc)
 
 ## Running
 

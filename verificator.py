@@ -140,7 +140,7 @@ RESULTS_DIRS = {
     "gpt-5": "/home/k3l/projects/NutriOCR/results_gpt5",
     "PaddleOCR": "/home/k3l/projects/NutriOCR/results_json_paddleocr",
 }
-model_scores_path = Path("/home/k3l/projects/NutriOCR/model_scores.md")
+model_scores_path = Path("/home/k3l/projects/NutriOCR/model_scores/model_scores.md")
 
 
 

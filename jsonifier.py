@@ -8,6 +8,8 @@ import os
 from tqdm import tqdm
 import time
 
+from prompts import OCR_TEXT_EXTRACTION_PROMPT, OCR_TEXT_SYSTEM_PROMPT
+
 ### ---------------------- Reference values ---------------------------------------------- ###
 
 input_dir = Path("/home/k3l/projects/NutriOCR/results_paddleocr")
@@ -192,50 +194,13 @@ def txt_to_json_llm(text_path):     # promts llm to convert text into json
         input=[
             {   # prompt
                 "role": "system",               
-                "content": (
-                    "You extract structured product-label information from multilingual OCR text. "
-                    "Use only information clearly present in the supplied OCR text. "
-                    "Do not guess or invent missing values."
-                )
+                "content": OCR_TEXT_SYSTEM_PROMPT,
             },
             {
                 "role": "user",
-                "content": f"""
-Extract product and nutrition information from this OCR text.
-
-Rules:
-- Copy the supplied OCR text verbatim into recognized_text; do not reconstruct unreadable fragments.
-- The label may contain any language or several parallel translations.
-- Use a clearer equivalent in another language on the same label to recover poorly recognized fields.
-- Cross-check translations and repeated nutrition panels, but do not combine values from different products or unrelated sections.
-- Extract the visible product name, company/manufacturer name, and barcode.
-- Return barcode as digits only, preserving leading zeros.
-- Extract net product weight into net_weight_g and volume into volume_ml.
-- Convert kilograms to grams and liters to milliliters when necessary.
-- Do not confuse a nutrition-table basis such as 100 g or 100 ml with net weight or volume.
-- Return nutrition values per 100 g when the OCR text uses a mass basis, or per 100 ml when it uses a volume basis.
-- Both per-100-g and per-100-ml nutrition values are valid.
-- Nutrition tables may show adjacent columns for per 100 g/ml, per serving, per package, and percent daily intake.
-- Read the column headers carefully and select the explicitly labeled per-100-g or per-100-ml column.
-- Never take values from a serving, whole-package, or percent-daily-intake column when a per-100-g/ml column is present.
-- If no per-100-g/ml column exists and values are per serving, convert them to per 100 g when the serving mass is visible, or to per 100 ml when the serving volume is visible.
-- Do not convert between a mass basis and a volume basis unless product density is explicitly provided.
-- If a serving value cannot be converted to either basis without guessing, return null.
-- Energy may be printed in both kJ and kcal, often next to each other. The kcal field must contain kilocalories, never the kJ number.
-- When both are present, copy the explicitly labeled kcal value. If only kJ is clearly present, convert it to kcal by dividing by 4.184.
-- kcal means calories / energy value / энергетическая ценность / ккал.
-- protein_g means proteins / белки / ақуыз.
-- fat_g means total fats / жиры / май.
-- carbs_g means carbohydrates / углеводы / көмірсу.
-- Extract saturated fat, sugars, fiber, and salt only when clearly present.
-- All nutrition, weight, and volume values must be JSON numbers without units or text.
-- Convert comma decimal separators to dots and do not round values.
-- Return null for every missing or uncertain scalar value.
-- Do not invent values.
-
-OCR text:
-                    {md_text}
-                    """
+                "content": OCR_TEXT_EXTRACTION_PROMPT.format(
+                    ocr_text=md_text,
+                ),
                                 }
                             ],
                             text={
