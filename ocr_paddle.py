@@ -28,7 +28,7 @@ _ocr = None
 _jsonifier_client = None
 
 
-def _get_ocr():
+def _get_ocr(): # model creation
     global _ocr
 
     if _ocr is None:
@@ -42,12 +42,12 @@ def _get_ocr():
     return _ocr
 
 
-def build_image_input(image_path):
+def build_image_input(image_path):  # image preprocessing
     image = prepare_image(image_path)
     return np.asarray(image)
 
 
-def txt_to_json_llm(ocr_text):
+def txt_to_json_llm(ocr_text):  # converting outpt text into json via gpt-5
     global _jsonifier_client
 
     if _jsonifier_client is None:
@@ -79,7 +79,7 @@ def txt_to_json_llm(ocr_text):
     return json.loads(response.output_text)
 
 
-def process_image(image_path):
+def process_image(image_path):  # paddleocr
     image_input = build_image_input(image_path)
     result = _get_ocr().predict(image_input)
     page = result[0]

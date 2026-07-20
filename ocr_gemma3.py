@@ -95,15 +95,3 @@ if __name__ == "__main__":
     main()
 
 
-
-#--------------------------- RESULTS 12b ------------------------------------------------------
-
-# Failed:   cheese, metat, milk(wrong), redbull(hallucinated Kcal), sausages, softcheese(?)
-# Passed:   bread, carrots, cocomilk, cookie, nutsandseeds, pesto, test, waffle
-# 8/14, ~57% success rate
-
-#--------------------------- RESULTS 72b ------------------------------------------------------
-
-# Failed:   cheese
-# Passed:   bread, carrots,
-# /14, ~% success rate

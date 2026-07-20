@@ -1,4 +1,4 @@
-### ----------------------- GPT-5 Text Recognition ----------------------- ###
+### ----------------------- GPT-5 Text Recognition file ----------------------- ###
 
 import json
 
@@ -21,7 +21,7 @@ SCORES_DIR_PATH = PROJECT_DIR / "model_scores" / "model_scores.md"
 
 _client = None
 
-### ------------------------------------ Image Preparation ------------------------------------ ###
+### ------------------------------------ Image Preprocessing ------------------------------------ ###
 
 def build_image_input(image_path):
     image = prepare_image(image_path)
