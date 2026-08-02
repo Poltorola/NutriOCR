@@ -1,0 +1,29 @@
+{
+  "recognized_text": "COCONUT CREAM\nКОКОСОВЫЙ КРЕМ ДЛЯ ГОТОВКИ\n(РАСТИТЕЛЬНЫХ ЖИРОВ 24%)\nТорговая марка \"KATI\"\nОБЪЕМ: 150 МЛ\nМожет заменить молочные сливки при готовке каши.\nПодходит для добавления в кофе.\nСостав: переработанная мякоть кокосового ореха 85 %,\nвода, стабилизаторы (ксантокановая камедь,\nгуаровая камедь, каррагинан) 0,1 %.\nПищевая ценность на 100 мл продукта: белки –\n2,5 г, жиры – 24 г, углеводы – 2,8 г. Энергетическая\nценность на 100 мл продукта: 237 ккал / 978 кДж.\nДата изготовления (РO), годен до (EXP):\nуказано на верхней части упаковки.\nИзготовитель: Viet World Company Limited.\nАдрес: Lot A5, A6, A7, Al Area, Giao Long Industrial Area,\nGiao Long Commune, Vinh Long Province, Вьетнам",
+  "product_name": "COCONUT CREAM / КОКОСОВЫЙ КРЕМ ДЛЯ ГОТОВКИ",
+  "company_name": "Viet World Company Limited",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 150,
+  "nutrition": {
+    "kcal": 237,
+    "protein_g": 2.5,
+    "fat_g": 24,
+    "saturated_fat_g": null,
+    "carbs_g": 2.8,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cocomilk.jpg",
+  "model": "gemma4:31b-it-qat",
+  "processing_time_seconds": 137.761,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    137.761
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 444
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "recognized_text": "СЫР ЧЕЧИЛ белый Спагетти\nPRÉSIDENT\nМАССА НЕТТО 100 г\n4 607022 661729\nЭнергетическая ценность: 1183 кДж / 282 ккал\nБелки: 25,0 г\nЖиры: 18,0 г\nУглеводы: 4,7 г",
+  "product_name": "СЫР ЧЕЧИЛ белый Спагетти",
+  "company_name": "PRÉSIDENT",
+  "barcode": "4607022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 282,
+    "protein_g": 25.0,
+    "fat_g": 18.0,
+    "saturated_fat_g": null,
+    "carbs_g": 4.7,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gemma4:31b-it-qat",
+  "processing_time_seconds": 82.031,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    82.031
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 259
+  }
+}

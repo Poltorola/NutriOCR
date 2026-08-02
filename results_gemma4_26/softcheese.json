@@ -1,0 +1,29 @@
+{
+  "recognized_text": "7,8 g yoglar - 17,0 g uvelodar - 3,5 g energiyk uyymal (kaloriyalar) - 239 kkal / 100 g\nuglar - 7,8 g yoglar - 17,0 g uvelodar - 3,5 g energiyk uyymal (kaloriyalar) - 239 kkcal / 100 g\nuglar - 7,8 g yoglar - 17,0 g uvelodar - 3,5 g energiyk uyymal (kaloriyalar) - 239 kcal / 100 g",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 239.0,
+    "protein_g": null,
+    "fat_g": 17.0,
+    "saturated_fat_g": null,
+    "carbs_g": 7.8,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "softcheese.jpg",
+  "model": "gemma4:26b-a4b-it-qat",
+  "processing_time_seconds": 5.864,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    5.864
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 271
+  }
+}

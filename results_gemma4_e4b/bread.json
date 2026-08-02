@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Пищевая ценность на 100 г\nБелки 1.1 г\nЖиры 0.2 г\nУглеводы 5.7 г\nЭнергетическая ценность 310 ккал\nИзготовитель: ОАО «Хлеб»\nЧелябинская область, г. Челябинск",
+  "product_name": "Dr. Kör Хлеб",
+  "company_name": "ОАО «Хлеб»",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 310,
+    "protein_g": 1.1,
+    "fat_g": 0.2,
+    "saturated_fat_g": null,
+    "carbs_g": 5.7,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "bread.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 17.473,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    17.473
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

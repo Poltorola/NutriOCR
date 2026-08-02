@@ -1,0 +1,39 @@
+{
+  "recognized_text": "RU\nМолоко питьевое ультрапастеризованное.\nСостав: молоко коровье цельное; молоко коровье обезжиренное. Без консервантов и красителей. Жирность 3,2%. После вскрытия упаковки продукт хранить при температуре от 0°С до +6°С не более 24 часов. Изготовитель и организация, уполномоченная принимать претензии от потребителей: ТОО «Adal Group».\n100 г өнімнің құрамы / Содержание в 100 г продукта:\nмай/жир 3,2 г\nақуыз/белок 2,8 г\nкөмірсу/углеводы 4,7 г\nЭнергетикалық құндылығы / Энергетическая ценность: 246 кДж / 59 ккал\nСақтау шарттары / Условия хранения: Хранить в сухом защищенном от света месте при температуре от +2°С до +25°С и влажности воздуха не более 75%.\nКөлемі / Объем: 925 мл.",
+  "product_name": "Молоко питьевое ультрапастеризованное",
+  "company_name": "ТОО «Adal Group»",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 925,
+  "nutrition": {
+    "kcal": 59,
+    "protein_g": 2.8,
+    "fat_g": 3.2,
+    "saturated_fat_g": null,
+    "carbs_g": 4.7,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "milk.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 43.478,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    43.478
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.154,
+    "model_response_seconds": 43.324,
+    "time_to_first_event_seconds": 1.803,
+    "time_to_first_text_seconds": 40.168,
+    "stream_event_count": 359,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_055d66d01fa149a3890594258cfc7800",
+    "openai_response_id": "resp_06f7df34bc0712b0006a6ecd170d70819a9b36e98e13058432",
+    "input_tokens": 1498,
+    "output_tokens": 3310,
+    "total_tokens": 4808
+  }
+}

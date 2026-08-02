@@ -1,0 +1,29 @@
+{
+  "recognized_text": "СМЕСЬ ДЛЯ САЛАТОВ, ГАРНИРОВ, ДЕСЕРТОВ ОРЕХОВЫЙ ВКУС. Состав: грецкие орехи, кешью, миндаль, семена подсолнечника, семена тыквы, кунжут, изюм, финики, курага, чернослив, сушеная клюква, сушеная вишня, арахис, семена чиа, семена конопли. Пищевая ценность: Энерг. 554, Белки 22.8, Жиры 47.1, Углеводы 10.6. Масса нетто: 100 г.",
+  "product_name": "СМЕСЬ ДЛЯ САЛАТОВ, ГАРНИРОВ, ДЕСЕРТОВ ОРЕХОВЫЙ ВКУС",
+  "company_name": "ООО 'Ореховый Вкус'",
+  "barcode": "465529984792",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 554,
+    "protein_g": 22.8,
+    "fat_g": 47.1,
+    "saturated_fat_g": null,
+    "carbs_g": 10.6,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "nutsandseeds.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 16.189,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    16.189
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

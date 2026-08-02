@@ -1,0 +1,39 @@
+{
+  "recognized_text": "PRÉSIDENT\nСЫР ЧЕЧИЛ\nбелый\nСпагетти\nМАССА НЕТТО 100 г\n4607022661729\nEAC\n10.05.26 16:34\n24.07.26 ПЛ 8",
+  "product_name": "СЫР ЧЕЧИЛ белый Спагетти",
+  "company_name": "Président",
+  "barcode": "4607022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 25.266,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    25.266
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.151,
+    "model_response_seconds": 25.114,
+    "time_to_first_event_seconds": 1.498,
+    "time_to_first_text_seconds": 23.567,
+    "stream_event_count": 164,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_96732ddf7b884617851b1bba2de2c2aa",
+    "openai_response_id": "resp_0c49637b5658c829006a6ecc92e000819bb90a328e2d0d59ad",
+    "input_tokens": 1778,
+    "output_tokens": 1546,
+    "total_tokens": 3324
+  }
+}

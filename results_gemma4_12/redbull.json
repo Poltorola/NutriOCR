@@ -1,0 +1,12 @@
+{
+  "image": "redbull.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 703.818,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    351.454,
+    352.364
+  ],
+  "openai_request_id": null,
+  "error": "ValueError: Ollama model gemma4:12b (done_received=True, done_reason='length', thinking_chars=0) returned invalid JSON at line 2, column 22: Unterminated string starting at. Response preview: '{\\n  \"recognized_text\": \"ALL\\\\n0.25l\\\\ne\\\\n4 917010 042006\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\nSüppejätke\\\\n' <- JSONDecodeError: Unterminated string starting at: line 2 column 22 (char 23)"
+}

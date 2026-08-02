@@ -1,0 +1,29 @@
+{
+  "recognized_text": "МОЛОКО УЛЬТРАПАСТЕРИЗОВАННОЕ\nСостав: Молоко цельное. Молоко ультрапастеризованное. Содержит: Молоко, вода, молочный сахар, стабилизатор, консервант. Срок годности: 12 месяцев. Производитель: ООО «АЛМАТИНСКИЙ». Адрес: Казахстан. Телефон: +7 701 250 00 00. Упаковка: 925 мл. Содержание в 100 г. (100 мл):\nЖиры: 3.2\nБелки: 3.2\nУглеводы: 4.7\nЭнергетическая ценность: 246 кДж / 59 ккал\nОбъем/Volume: 925 мл",
+  "product_name": "Молоко ультрапастеризованное",
+  "company_name": "ООО «АЛМАТИНСКИЙ»",
+  "barcode": "Not visible",
+  "net_weight_g": null,
+  "volume_ml": 925,
+  "nutrition": {
+    "kcal": 59,
+    "protein_g": 3.2,
+    "fat_g": 3.2,
+    "saturated_fat_g": null,
+    "carbs_g": 4.7,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "milk.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 13.891,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    13.891
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

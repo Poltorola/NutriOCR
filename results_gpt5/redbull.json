@@ -1,0 +1,39 @@
+{
+  "recognized_text": "0,25 л\nEAC\nalu\nSugarfree\nRed Bull\n9 002490 120713",
+  "product_name": "Red Bull Sugarfree",
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 250,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "redbull.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 85.818,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    85.818
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.225,
+    "model_response_seconds": 85.592,
+    "time_to_first_event_seconds": 2.178,
+    "time_to_first_text_seconds": 84.205,
+    "stream_event_count": 116,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_3fbfb1ee469340178065e969dc9ebe58",
+    "openai_response_id": "resp_0d99c5b26c26fec5006a6ecd8eaafc819babb3e470f7ccef4b",
+    "input_tokens": 1498,
+    "output_tokens": 4268,
+    "total_tokens": 5766
+  }
+}

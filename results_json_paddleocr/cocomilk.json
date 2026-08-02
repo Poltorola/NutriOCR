@@ -1,0 +1,25 @@
+{
+  "recognized_text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_477_211_708_426.jpg\" alt=\"Image\" width=\"24%\" /></div>\n\n\n# COCONUT CREAM  КОКОСОВЫЙ КРЕМ ДЛЯ ГОТОВКИ (РАСТИТЕЛЬНЫХ ЖИРОВ 24%) Торговая марка \"КАТ!\"\n\nОБЪЕМ: 150 МЛ\n\nМожет заменитьмолочные сливки при готовке каши. а и  и\n\nСостав: переработанная мякоть кокосового ореха 85 %,вода,стабилизаторы (ксантановая камедь,гуаровая камедь, каррагинан) 0,1 %.\n\nПищевая ценность на 100 мл продукта: белки 2,5 г, жиры - 24 г, углеводы - 2,8 г. ЭнергетическаяценностьHa 100МL  продукта: 237 ккал / 978 кДж.Дата изготовления (РRO), годен до (ЕХР):указано на верхней части упаковки.\n\nИзготовитель: Viet World Comраny Limited.Aдpec: Lot A5, A6, A7, Al Area, Giao Long Industrial Area,Gio Long Commune, Vinh Long Province, Bетаm ",
+  "product_name": "COCONUT CREAM",
+  "company_name": "Viet World Comраny Limited.",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 150,
+  "nutrition": {
+    "kcal": 237,
+    "protein_g": 2.5,
+    "fat_g": 24,
+    "saturated_fat_g": null,
+    "carbs_g": 2.8,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cocomilk.jpg",
+  "model": "paddleocr+gpt-5-jsonifier",
+  "processing_time_seconds": 33.241,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    33.241
+  ]
+}

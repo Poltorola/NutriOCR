@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Күс Вкус ТАРТЫЛАН ЕТІ ЖӘНЕ ЖАЙЫЛДЫҒЫ\nМасса нетто 0.5kg\nЭнергетическая ценность\nКкал\nБелки\nЖиры\nУглеводы\nНасыщенные жиры\nСахара\nКлетчатка\nСоль\n180\n5\n10\n20\n3\n10\n1\n0.5",
+  "product_name": "Күс / Вкус",
+  "company_name": null,
+  "barcode": "270185700536",
+  "net_weight_g": 500,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 180,
+    "protein_g": 5,
+    "fat_g": 10,
+    "saturated_fat_g": 3,
+    "carbs_g": 20,
+    "sugars_g": 10,
+    "fiber_g": 1,
+    "salt_g": 0.5
+  },
+  "image": "metat.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 20.918,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    20.918
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

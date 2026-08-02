@@ -1,0 +1,30 @@
+{
+  "recognized_text": "RU ВАФЛИ С... МАССА НЕТТО 100 г. ЭНЕРГЕТИЧЕСКАЯ ЦЕННОСТЬ ЦЕННОСТЬ 100 г продукта. Белки 20,0 г. Жиры 32,0 г. Углеводы 45,0 г. 550 ккал. Изготовитель АО «Кондитерская фабрика «Красный Октябрь»",
+  "product_name": "ВАФЛИ С...",
+  "company_name": "АО «Кондитерская фабрика «Красный Октябрь»",
+  "barcode": "4000000000000",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 550,
+    "protein_g": 20.0,
+    "fat_g": 32.0,
+    "saturated_fat_g": null,
+    "carbs_g": 45.0,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "waffle.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 178.161,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    163.274,
+    14.887
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

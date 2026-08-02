@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Dichiarazione Nutrizionale -\nΔιατροφική Δήλωση - Wartość Odżywcza\nInformación Nutricional\nEnergia - Ενέργεια -\nWartość energetyczna -\nValor energético\nkj 1360\ngrassi - λιπαρά - Grasas - Tłuszcz\nkcal 329\ndi cui: Acidi grassi saturi - εκ των οποίων:\nsaturated fats - tłuszcze nasycone - de las cuales: Saturadas\n9 29\ncarboidrati - Υδατάνθρακες -\nWęglowodany - Hidratos de carbono\n9 3,4\ndi cui: Zucchero - εκ των οποίων: σάκχαρα -\nof which: cukry - de los cuales: Azúcares\n9 12\nfibre - Ειδώμενες ίνες -\nBłonnik - Fibra alimentaria\ng 7,8\nproteine - Πρωτεΐνες -\nBiałko - Proteínas\ng 2,3\nsale - Αλάτι - Sól\ng 3,8\ng 2,8\nSENZA GLUTINE / ΧΩΡΙΣ ΓΛΟΥΤΕΝΗ\nBEZGLUTENOWY / SIN GLUTEN\nBarilla G. e R. Fratelli - Società per Azioni, via Mantova\n166, 43122 Parma (Italy).",
+  "product_name": null,
+  "company_name": "Barilla G. e R. Fratelli - Società per Azioni",
+  "barcode": "076809325471",
+  "net_weight_g": 200,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329.0,
+    "protein_g": 2.3,
+    "fat_g": 29.0,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12.0,
+    "sugars_g": 7.8,
+    "fiber_g": null,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "gemma3:12b-it-q8_0",
+  "processing_time_seconds": 20.037,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    20.037
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1015,
+    "output_tokens": 528
+  }
+}

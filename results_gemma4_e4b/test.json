@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Coca-Cola Sparkling Soft Drink with Vegetable Extracts. Ingredients: Carbonated Water, Sugar, Colour (Caramel E150d), Phosphoric Acid, Natural Flavours, Caffeine. Nutrition Information: Per 100ml. Energy 180kJ 45kcal. Fat 0g. Of which saturates 0g. Carbohydrate 27g. Of which sugars 27g. Protein 0g. Salt 0g.",
+  "product_name": "Coca-Cola",
+  "company_name": "Coca-Cola European Holdings Ltd.",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 100,
+  "nutrition": {
+    "kcal": 45,
+    "protein_g": 0,
+    "fat_g": 0,
+    "saturated_fat_g": 0,
+    "carbs_g": 27,
+    "sugars_g": 27,
+    "fiber_g": null,
+    "salt_g": 0
+  },
+  "image": "test.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 13.377,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    13.377
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

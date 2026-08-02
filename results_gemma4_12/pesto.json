@@ -1,0 +1,30 @@
+{
+  "recognized_text": "Dichiarazione Nutrizionale - Δητροφική Διάθλαση - Wartość Odżywcza - Nutrition Information\n100 g\nEnergia - Ενέργεια - - - \nValuté energeticzna - Valor energético\nkj 1360 kcal 329\nGrassi - Λιπίδα - Grasas - Tłuszcze\ndi cui: grassi saturi - εκ των οποίων: λιπίδες κορεσμένες - de los cuales: grasas saturadas\nSaturadas g 3,4\nCarboidrati - Υδατάνθρακες - Kohlenhydrate - Hidratos de carbono\ndi cui: zuccheri - εκ των οποίων: σακχάρου - de los cuales: azúcares\nAzúcares g 7,8\nFibre - Φιβρες - Ballaststoffe - Fibra alimentaria\nBionik - Fibra alimentaria\nFibre g 2,3\nProteine - Πρωτεΐνες - Eiweißstoffe - Proteínas\nΒιόκο - Proteínas\ng 3,8\nSale - Αλάτι - Natrium - Sól - Sal\ng 0,8\nSENZA GLUTINE / ΧΩΡΙΣ ΓΛΥΤΕΝΗ\nBEGLUTENOWY / SIN GLUTEN\nBanile G. e. R. Fratelli - Società per Azioni, Via Mantova\n166, 43122 Parma (Italy).",
+  "product_name": null,
+  "company_name": "Banile G. e. R. Fratelli",
+  "barcode": "8017280991511",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": null,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 0.8
+  },
+  "image": "pesto.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 18.135,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    6.134,
+    12.001
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 498
+  }
+}

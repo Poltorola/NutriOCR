@@ -1,0 +1,29 @@
+{
+  "recognized_text": "энергетик құйматы (калориялы) - 230 ккал/961 кДж\nмайлар - 7.8 г, йоглар - 17.0 г, углеводлар - 3.5 г",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 230,
+    "protein_g": 17.0,
+    "fat_g": 7.8,
+    "saturated_fat_g": null,
+    "carbs_g": 3.5,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "softcheese.jpg",
+  "model": "gemma4:31b-it-qat",
+  "processing_time_seconds": 57.791,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    57.791
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 178
+  }
+}

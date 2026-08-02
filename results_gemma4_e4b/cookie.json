@@ -1,0 +1,29 @@
+{
+  "recognized_text": "ЗДОРОВОЕ ПИТАНИЕ. Энергетическая ценность 100 г. Белки 7.4 г. Жиры 14.7 г. Углеводы 56.2 г. Клетчатка 3.6 г. Энергетическая ценность 100 г. 398 ккал. 1666 кДж.",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 398,
+    "protein_g": 7.4,
+    "fat_g": 14.7,
+    "saturated_fat_g": null,
+    "carbs_g": 56.2,
+    "sugars_g": null,
+    "fiber_g": 3.6,
+    "salt_g": null
+  },
+  "image": "cookie.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 14.35,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    14.35
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

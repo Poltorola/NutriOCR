@@ -1,0 +1,29 @@
+{
+  "recognized_text": "СМЕСЬ ДЛЯ САЛОВОК, ГАРНИРОВ, ДЕСЕРТОВ \"ОБОРОННЫЙ ВКУС\"\n\nСостав: крошка хлебная, семена и крупы белые, семена черные, семена подсолнечника, репшолка.\nПищевая ценность 100 гр.: Белки - 22,6 г, Жиры - 47,3 г, Углеводы - 10,6 г\nЭнерг. ценность: 557,4 ккал\n\nПроизводитель: ООО \"ПИЩЕПРОМ\"\nАдрес производства: \nРоссия, 111421, Нилский пр-т, 36Б\nУкраина, 01000, ул. Симоновская, 15\n\nМасса нетто: 100 г. 25 гр.\n\nДата производства: 25.10.2023",
+  "product_name": "СМЕСЬ ДЛЯ САЛОВОК, ГАРНИРОВ, ДЕСЕРТОВ \"ОБОРОННЫЙ ВКУС\"",
+  "company_name": "ООО \"ПИЩЕПРОМ\"",
+  "barcode": "695299847926",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 557.4,
+    "protein_g": 22.6,
+    "fat_g": 47.3,
+    "saturated_fat_g": null,
+    "carbs_g": 10.6,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "nutsandseeds.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 10.851,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    10.851
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 416
+  }
+}

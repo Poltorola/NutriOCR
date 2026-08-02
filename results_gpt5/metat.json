@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Кус&Вкус\nҚАЗАҚСТАНДА ЖАСАЛҒАН / СДЕЛАНО В КАЗАХСТАНЕ\nТАРТЫЛҒАН ЕТІ ҮЙ ЖАҒДАЙЫНДАҒЫ / ФАРШ ПО-ДОМАШНЕМУ\n10.13.14-018-86437982-2016 / ТУ 10.13.14-018-86437982-2016\nсалқындатылған / охлажденная\nМодификацияланған атмосфера жағдайына оралған / Упаковано в условиях модифицированной атмосферы\nСақтау температурасы 0…+2°C / Температура хранения 0…+2°C\nДайындалған күні мен уақыты: 06.06.26 02:54\nЖарамдылық мерзімі: 14.06.26\nТаза салмағы, кг: 0,536 / Масса нетто, кг: 0,536\nПартия нөмірі: МП50626051\nРЦ-31\nАртикул-1857\n2701857 005368",
+  "product_name": "ТАРТЫЛҒАН ЕТІ ҮЙ ЖАҒДАЙЫНДАҒЫ / ФАРШ ПО-ДОМАШНЕМУ",
+  "company_name": "Кус&Вкус",
+  "barcode": "2701857005368",
+  "net_weight_g": 536,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "metat.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 48.748,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    48.748
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.051,
+    "model_response_seconds": 48.698,
+    "time_to_first_event_seconds": 2.861,
+    "time_to_first_text_seconds": 45.676,
+    "stream_event_count": 379,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_a0009a7cd4254a51a1718ce9c72bdb25",
+    "openai_response_id": "resp_048121cc63730243006a6ecce55598819990019361bb38c1f3",
+    "input_tokens": 1498,
+    "output_tokens": 3187,
+    "total_tokens": 4685
+  }
+}

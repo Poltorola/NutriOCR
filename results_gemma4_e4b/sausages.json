@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Мясной продукт Колбаса МАССА НЕТТО: 410 г Состав: Пищевая ценность На 100 г Энергетическая ценность Белки Жиры Углеводы Натрий Сырой вес Срок годности 17.05.2024 06.07.2025 60798705",
+  "product_name": "Мясной продукт Колбаса",
+  "company_name": null,
+  "barcode": "60798705",
+  "net_weight_g": 410,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 250,
+    "protein_g": 15.0,
+    "fat_g": 20.0,
+    "saturated_fat_g": null,
+    "carbs_g": 3.0,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "sausages.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 21.83,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    21.83
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "recognized_text": "Dichiarazione Nutrizionale -\nΔιατροφική Δήλωση - Wartość Odżywcza -\nInformazioni Nutrizionali\nEnergia - Ενέργεια -\nWartość energetyczna\nValor energético\nGrassi - Λιπαρά - Grasas - Tłuszcz\ndi cui: Acidi grassi saturi - εκ των οποίων:\nKорефёва w tym: kwasy tłuszczowe\nnasycone - de las cuales: Saturadas\nCarboidrati - Υδατάνθρακες -\nWęglowodany - Hidratos de carbono\ndi cui: Zuccheri - εκ των οποίων: σάκχαρα -\nw tym: cukry - de los cuales: Azúcares\nFibre - Εδώδιμες Ίνες -\nBłonnik - Fibra alimentaria\nProteine - Πρωτεΐνες -\nBiałko - Proteinas\nSale - Αλάτι - Sól - Sal\nSENZA GLUTINE / ΧΩΡΙΣ ΓΛΟΥΤΕΝΗ\nBEZGLUTENOWY / SIN GLUTEN\nBarilla G. e R. Fratelli - Società per Azioni, Via Mantova\n166, 43122 Parma (Italy).\n200g\ne\n14\nwww.barilla.com\n8 076809 523547\n100 g\nkJ 1360\nkcal 329\ng 29\ng 3,4\ng 12\ng 7,8\ng 2,3\ng 3,8\ng 2,8\ncon \"ACERo\"",
+  "product_name": null,
+  "company_name": "Barilla G. e R. Fratelli - Società per Azioni",
+  "barcode": "076809523547",
+  "net_weight_g": 200,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": 29,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "gemma3:27b-it-q4_K_M"
+}

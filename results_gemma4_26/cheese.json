@@ -1,0 +1,29 @@
+{
+  "recognized_text": "СЫР ЧЕЧИЛ белый Спагетти\nПРЕСИДЕНТ\n10.05.26 16:34\n24.07.26 П8\nMACCA HETTO 100 г\n4 607022 661729",
+  "product_name": "СЫР ЧЕЧИЛ белый Спагетти",
+  "company_name": "ПРЕСИДЕНТ",
+  "barcode": "4607022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gemma4:26b-a4b-it-qat",
+  "processing_time_seconds": 5.494,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    5.494
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 220
+  }
+}

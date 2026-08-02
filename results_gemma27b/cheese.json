@@ -1,0 +1,20 @@
+{
+  "recognized_text": "PRESIDENT\nСІР ЧЕЧИЛ\nбелый\nСпагетти\nMACCA\nНЕТТО\n100 г\n4607022661729",
+  "product_name": "СІР ЧЕЧИЛ Спагетти",
+  "company_name": "PRESIDENT",
+  "barcode": "4607022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gemma3:27b-it-q4_K_M"
+}

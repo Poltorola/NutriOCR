@@ -1,0 +1,25 @@
+{
+  "recognized_text": "e Dichiarazione ДιатрофікΔλωοn Nutrizionale---Wartoé Odywcza 100g Omle Wartoc Energia Información energetyczna Evépyεla Nutricional kJ1360Valor energetico kcal 329Grassi Λιπαρá-Grasas - Tluszcz g 29di cui: Acidi grassi i saturi - εк тv onowу:Кopeouéva - w tym: kwasy tuszczowe nasycone - de las g 3,4Carboidrati - Yδatávθpakεс Weglowodany - Hidratos de carbono g 12di cui::Zucchéri - εk тwv oπowv: oákχapawtym:cukry--de los cuales: Azúcares g 7,8Fibre Е0IVεCBlonnik Fibra alimentaria g 2,3Proteine Пртεвεс\n\nBiako Proteinas g 3,8Sale AλáτιSól -Sal g 2,8SENZA GLUTINE/ XQPIE ГAOYTENH BEZGLUTENOWY / SIN GLUTEN Barill.FeSa 166, 43122 Parma (ltaly).",
+  "product_name": null,
+  "company_name": "Barill.FeSa",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": 29,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "paddleocr+gpt-5-jsonifier",
+  "processing_time_seconds": 30.23,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    30.23
+  ]
+}

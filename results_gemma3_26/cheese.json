@@ -1,0 +1,29 @@
+{
+  "recognized_text": "«СПАГЕТТИ ТАРИЗИ» АК ЧЕЧИЛ\nPRESIDENT\nСІР ЧЕЧИЛ\nбелый\nSpaghetti\nMACCA\nНЕТТО\n100 г\n4 607022 661729",
+  "product_name": "СІР ЧЕЧИЛ Spaghetti",
+  "company_name": "PRESIDENT",
+  "barcode": "607022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gemma3:27b-it-q4_K_M",
+  "processing_time_seconds": 39.195,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    39.195
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1015,
+    "output_tokens": 202
+  }
+}

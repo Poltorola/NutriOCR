@@ -1,0 +1,25 @@
+{
+  "recognized_text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_1_1_1917_2556.jpg\" alt=\"Image\" width=\"99%\" /></div>",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "paddleocr+gpt-5-jsonifier",
+  "processing_time_seconds": 25.882,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    25.882
+  ]
+}

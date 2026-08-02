@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Пищевая ценность на 100 г продукта: белки — 11,0 г; жиры — 2,0 г; углеводы — 57,0 г; пищевые волокна — 9,2 г.\nЭнергетическая ценность на 100 г продукта: 1300 кДж/310 ккал.\nНе содержит ГМО.\nИзготовитель: ОАО «Хлебпром».\nПищевая ценность одного хлебца: энергетическая ценность — 31 ккал; белки — 1,1 грамм; жиры — 0,2 грамма; углеводы — 5,7 грамм.\n* Средние значения для одного хлебца Dr. Körner при весе — 10 г.\nwww.hlebprom.ru",
+  "product_name": null,
+  "company_name": "ОАО «Хлебпром»",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 310,
+    "protein_g": 11,
+    "fat_g": 2,
+    "saturated_fat_g": null,
+    "carbs_g": 57,
+    "sugars_g": null,
+    "fiber_g": 9.2,
+    "salt_g": null
+  },
+  "image": "bread.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 32.431,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    32.431
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 3.96,
+    "model_response_seconds": 28.445,
+    "time_to_first_event_seconds": 1.955,
+    "time_to_first_text_seconds": 25.741,
+    "stream_event_count": 272,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_4a2f7ae6ebdd4c4c8969ee0d0aeec2fd",
+    "openai_response_id": "resp_0ac07cd79b183070006a6ecc4e731c8199ab95c8b2ab9b7893",
+    "input_tokens": 1498,
+    "output_tokens": 2023,
+    "total_tokens": 3521
+  }
+}

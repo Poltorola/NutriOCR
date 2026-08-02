@@ -1,0 +1,29 @@
+{
+  "recognized_text": "в 100 продукціи содержится / 100 г өнімнің ішінде\nбелки | жиры | углеводы | пищевые волокна\nбелоктар | майлар | көмірсулар | тағамдық талшық\n7.4г | 16.1г | 56.2г | 3.6г\nЭнергетическая ценность на 100 г:\n398 ккал / 1666 кДж",
+  "product_name": null,
+  "company_name": "ЗДОРОВОЕ ПИТАНИЕ",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 398,
+    "protein_g": 7.4,
+    "fat_g": 16.1,
+    "saturated_fat_g": null,
+    "carbs_g": 56.2,
+    "sugars_g": null,
+    "fiber_g": 3.6,
+    "salt_g": null
+  },
+  "image": "cookie.jpg",
+  "model": "gemma4:26b-a4b-it-qat",
+  "processing_time_seconds": 5.739,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    5.739
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 249
+  }
+}

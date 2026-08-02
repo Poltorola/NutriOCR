@@ -1,0 +1,25 @@
+{
+  "recognized_text": "SSIC \n\n# Coke  4x250mle bottles \n\nSparkling Soft Drink with Vegetabt Ingredients: Carbonated Water, Suga Colour (Caramel E150d).Phosphoric A Natural Flavourings Including Caffeine Best before end:See crown or bottle Store cool and dry.\n\nThis pack is intended for sale as one This multipack contains 4x250ml boti \n\nNUTRITION INFORMATION TYPICAL VALUES Per:100ml 250ml (%Energy:180kJ 450kJ 42kcal 105kcal (5%)Fat:Og Og (0%)of which saturates:Og Og (0%)Carbohydrate:10.6g 27g (10%)of which sugars:10.6g 27g (29%)Protein:0g Og (0%)Salt:0g Og (0%)\n\n*Reference intake of an average adult (8400kJ/2000kcal).\n\n\n\nCoca -Cola European Partners Great Britain Limited.Uxbridge UB81E2",
+  "product_name": "Coke",
+  "company_name": "Coca -Cola European Partners Great Britain Limited",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 1000,
+  "nutrition": {
+    "kcal": 42,
+    "protein_g": 0,
+    "fat_g": 0,
+    "saturated_fat_g": 0,
+    "carbs_g": 10.6,
+    "sugars_g": 10.6,
+    "fiber_g": null,
+    "salt_g": 0
+  },
+  "image": "test.jpg",
+  "model": "paddleocr+gpt-5-jsonifier",
+  "processing_time_seconds": 47.902,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    47.902
+  ]
+}

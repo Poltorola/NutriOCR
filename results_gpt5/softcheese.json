@@ -1,0 +1,39 @@
+{
+  "recognized_text": "... oqslar — 7,8 g; yaglar — 17,0 g; uglevodlar — 35,5 g; energetik qiymati 320 ...",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 320,
+    "protein_g": 7.8,
+    "fat_g": 17,
+    "saturated_fat_g": null,
+    "carbs_g": 35.5,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "softcheese.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 47.881,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    47.881
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.051,
+    "model_response_seconds": 47.83,
+    "time_to_first_event_seconds": 1.61,
+    "time_to_first_text_seconds": 46.412,
+    "stream_event_count": 131,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_12a7f7e6a22142aaad771189700d6e80",
+    "openai_response_id": "resp_0a33f77acb693b73006a6ecdff1214819b8fec4ed444a968b2",
+    "input_tokens": 1498,
+    "output_tokens": 2804,
+    "total_tokens": 4302
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "recognized_text": "МЯСОСОДЕРЖАЩИЙ ПРОДУКТ, ИЗДЕЛИЕ КОЛБАСНОЕ ВАРЕНОЕ КАТЕГОРИИ В: СОСИСКИ СЛИВОЧНЫЕ. МАССА НЕТТО: 410 Г.\n\nЕАС  ♻️  КВК\n4607958076055\n\nИЗГОТОВЛЕНО И УПАКОВАНО: 17.05.26\nГОДЕН ДО: 06.07.26",
+  "product_name": "Сосиски сливочные",
+  "company_name": null,
+  "barcode": "4607958076055",
+  "net_weight_g": 410,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "sausages.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 27.977,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    27.977
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.045,
+    "model_response_seconds": 27.932,
+    "time_to_first_event_seconds": 1.111,
+    "time_to_first_text_seconds": 25.821,
+    "stream_event_count": 214,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_b10dbfa21b6d4845bc1e7b9317ea5c62",
+    "openai_response_id": "resp_0283ac22b7352599006a6ecde36d988199afb99a3e9e01ce5c",
+    "input_tokens": 1498,
+    "output_tokens": 1597,
+    "total_tokens": 3095
+  }
+}

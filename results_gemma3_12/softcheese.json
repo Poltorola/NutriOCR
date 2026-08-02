@@ -1,0 +1,29 @@
+{
+  "recognized_text": "İçindekiler: Su, domates püresi (organik), sebzeler (havuç, soğan, kereviz), zeytinyağı, tuz, şeker, baharatlar (kimyon, kekik, biberiye, fesleğen), modifiye nişasta, sarımsak, doğal aroma vericiler.  Üretici Firma: Yılmaz Deniz Ürünleri Gıda San. ve Tic. A.Ş.\nAdres: Organize Sanayi Bölgesi 1037/2 Sk. No:5-6 Merkezefendi / DENİZLİ\nwww.yilmazdeniz.com.tr\nBesin Değerleri (100g için)\nEnerji (kcal) : 28\nEnerji (kJ) : 118\nYağ : 0,5 g\n  -Doymuş Yağ : 0,1 g\nKarbonhidrat : 5,6 g\n  -Şekerler : 2,7 g\nLif : 2,3 g\nProtein : 1,7 g\nTuz : 0,8 g\nNet Miktar: 400g",
+  "product_name": null,
+  "company_name": "Yılmaz Deniz Ürünleri Gıda San. ve Tic. A.Ş.",
+  "barcode": "null",
+  "net_weight_g": 400,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 28,
+    "protein_g": 1.7,
+    "fat_g": 0.5,
+    "saturated_fat_g": 0.1,
+    "carbs_g": 5.6,
+    "sugars_g": 2.7,
+    "fiber_g": 2.3,
+    "salt_g": 0.8
+  },
+  "image": "softcheese.jpg",
+  "model": "gemma3:12b-it-q8_0",
+  "processing_time_seconds": 17.326,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    17.326
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1015,
+    "output_tokens": 448
+  }
+}

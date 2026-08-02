@@ -1,0 +1,39 @@
+{
+  "recognized_text": "СМЕСЬ ДЛЯ САЛАТОВ, ГАРНИРОВ, ДЕСЕРТОВ \"ОРЕХОВЫЙ ВКУС\"\nСостав: крошка жареного арахиса, семена кунжута белого, тыквенные семечки, семена подсолнечника, семена тёмного льна.\nПищевая ценность 100 гр.:\nБелки - 22,8 г, Жиры - 47,3 г, Углеводы - 10,6 г;\nЭнерг. ценность: 557,4 кКал\nСрок и условия хранения: 12 месяцев с даты изготовления ... при температуре +5..+25°С ...\nИзготовитель: ИП Настин А.Н.\nАдрес производства: Россия, 610046, Кировская обл., г. Киров, ул. Загородная, д. 11\nМасса нетто: 100 гр. ± 5 гр.\n25.10.2025\n4655299847926",
+  "product_name": "Смесь для салатов, гарниров, десертов «Ореховый вкус»",
+  "company_name": "ИП Настин А.Н.",
+  "barcode": "4655299847926",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 557.4,
+    "protein_g": 22.8,
+    "fat_g": 47.3,
+    "saturated_fat_g": null,
+    "carbs_g": 10.6,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "nutsandseeds.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 26.203,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    26.203
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.04,
+    "model_response_seconds": 26.163,
+    "time_to_first_event_seconds": 0.811,
+    "time_to_first_text_seconds": 23.545,
+    "stream_event_count": 357,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_cfef22ee9e2c4d17af61d5cbaec92a1b",
+    "openai_response_id": "resp_0cad301887fbcb6b006a6ecd4177ac819ba7c8aa50f84a3967",
+    "input_tokens": 1498,
+    "output_tokens": 1995,
+    "total_tokens": 3493
+  }
+}

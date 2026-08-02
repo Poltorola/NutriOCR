@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Пищевая и энергетическая ценность 100 г продукта (средние значения)\nБелки 20,0г\nЖиры 32,0г\nУглеводы 45,0г\nЭнергетическая ценность 550 ккал (2300 кДж)\nГОСТ 14031-2014\nУсловия хранения: хранить при температуре 18±3°С с относительной влажностью воздуха 65-70%.\nИзготовитель: АО «Кондитерская фабрика «Пермская». Адрес: 614014, Россия, г. Пермь, ул. Некрасова, 35.\nОтдел качества: quality@pkf.perm.ru\nfruiti (фрути) зарегистрированный товарный знак\nМАССА НЕТТО:",
+  "product_name": null,
+  "company_name": "АО «Кондитерская фабрика «Пермская»",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 550,
+    "protein_g": 20,
+    "fat_g": 32,
+    "saturated_fat_g": null,
+    "carbs_g": 45,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "waffle.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 40.895,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    40.895
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.046,
+    "model_response_seconds": 40.849,
+    "time_to_first_event_seconds": 0.705,
+    "time_to_first_text_seconds": 38.64,
+    "stream_event_count": 277,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_18dfb73da1d8461197ebe5c46639ead6",
+    "openai_response_id": "resp_0465e5dc4551d270006a6ece51ce78819890b57c344924fba3",
+    "input_tokens": 1498,
+    "output_tokens": 2547,
+    "total_tokens": 4045
+  }
+}

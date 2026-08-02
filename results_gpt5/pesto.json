@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Dichiarazione Nutrizionale - Διατροφική Δήλωση - Wartość Odżywcza - Información Nutricional\n100 g\nEnergia - Ενέργεια - Wartość energetyczna - Valor energético kJ 1360 kcal 329\nGrassi - Λιπαρά - Grasas - Tłuszcz g 29\n…di cui: Acidi grassi saturi - εκ των οποίων: Saturadas - nasycone g 3,4\nCarboidrati - Υδατάνθρακες - Węglowodany - Hidratos de carbono g 12\n…di cui: Zuccheri - εκ των οποίων: σάκχαρα - w tym: cukry - de los cuales: Azúcares g 7,8\nFibre - Εδώδιμες ίνες - Błonnik - Fibra alimentaria g 2,3\nProteine - Πρωτεΐνες - Białko - Proteínas g 3,8\nSale - Αλάτι - Sól - Sal g 2,8\nSENZA GLUTINE / ΧΩΡΙΣ ΓΛΟΥΤΕΝΗ / BEZGLUTENOWY / SIN GLUTEN\nBarilla G. e R. Fratelli - Società per Azioni, Via Mantova 166, 43122 Parma (Italy).\nwww.barilla.com\n200 g ℮\n350 ml ℮\n(partial barcode digits visible): 8 07680 1",
+  "product_name": null,
+  "company_name": "Barilla G. e R. Fratelli - Società per Azioni",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": 29,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 49.672,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    49.672
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.041,
+    "model_response_seconds": 49.631,
+    "time_to_first_event_seconds": 0.692,
+    "time_to_first_text_seconds": 45.45,
+    "stream_event_count": 437,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_2d7bcae6c21b4cc1b95bf8b32a9ac93b",
+    "openai_response_id": "resp_0c7c3462768c19d8006a6ecd5ba294819aaae10cbe67b96ffc",
+    "input_tokens": 1498,
+    "output_tokens": 3213,
+    "total_tokens": 4711
+  }
+}

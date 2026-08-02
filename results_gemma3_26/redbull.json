@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Healthy Water\n100% fruit juice\nApple, pear, white grape\nDirectly squeezed juice\n53.3% juice-water mixture\nPasteurized\nNet weight: 1.6 L\nImporter/Manufacturer:\nOOO \"Miracle Food\"\n123022, Moscow, Russia\n8-800-555-35-35\nwww.miraclefood.ru\nEAC\n9 002490 704254\nОбъем: 1,6 л\nПитевая ценность: 100% сок \nПредложение питание: 100 г/100 мл\nПитательная ценность (100 мл)\nПитательная ценность (100 г)\nEnergy 50 kcal\nFat 0.7 g\nCarbs 12.8 g\nSugars 10.6 g\nSalt 0 g",
+  "product_name": null,
+  "company_name": "OOO \"Miracle Food\"",
+  "barcode": "9002490704254",
+  "net_weight_g": 1600,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 50.0,
+    "protein_g": null,
+    "fat_g": 0.7,
+    "saturated_fat_g": null,
+    "carbs_g": 12.8,
+    "sugars_g": 10.6,
+    "fiber_g": null,
+    "salt_g": 0.0
+  },
+  "image": "redbull.jpg",
+  "model": "gemma3:27b-it-q4_K_M",
+  "processing_time_seconds": 159.728,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    159.728
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1015,
+    "output_tokens": 888
+  }
+}

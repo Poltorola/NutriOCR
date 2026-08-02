@@ -1,0 +1,29 @@
+{
+  "recognized_text": "100g üründe: Enerji 385 kJ / 92 kcal\nYağ: 4,6 g\n\nDoymuş Yağ: 1,7 g\n\nKarbonhidrat: 14,5 g\n\nŞeker: 14,5 g\n\nProtein: 0,3 g\n\nTuz: 0,28 g",
+  "product_name": "ürün",
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 92,
+    "protein_g": 0.3,
+    "fat_g": 4.6,
+    "saturated_fat_g": 1.7,
+    "carbs_g": 14.5,
+    "sugars_g": 14.5,
+    "fiber_g": null,
+    "salt_g": 0.28
+  },
+  "image": "softcheese.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 7.667,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    7.667
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 260
+  }
+}

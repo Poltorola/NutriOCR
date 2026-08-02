@@ -1,0 +1,29 @@
+{
+  "recognized_text": "СЫР ЧЕЧИЛ белый Сыр-деликатес PRESIDENT МАССА НЕТТО 100г",
+  "product_name": "СЫР ЧЕЧИЛ белый",
+  "company_name": "PRESIDENT",
+  "barcode": "4067022661729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cheese.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 6.119,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    6.119
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 199
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "recognized_text": "",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "softcheese.jpg",
+  "model": "paddleocr+gpt-5-jsonifier",
+  "processing_time_seconds": 11.938,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    11.938
+  ]
+}

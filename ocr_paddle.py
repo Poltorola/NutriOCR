@@ -3,20 +3,20 @@
 # CPU version used during development:
 # paddlepaddle==3.2.0 paddleocr==3.3.3
 
-import json
-
 import numpy as np
 from openai import OpenAI
-from paddleocr import PPStructureV3
 
 from prompts import OCR_TEXT_EXTRACTION_PROMPT, OCR_TEXT_SYSTEM_PROMPT
 from utils import (
     NUTRITION_SCHEMA,
     PROJECT_DIR,
+    parse_json_response,
     prepare_image,
     run_batch,
     save_json_result,
 )
+
+from paddleocr import PPStructureV3
 
 
 MODEL = "paddleocr+gpt-5-jsonifier"
@@ -51,7 +51,8 @@ def txt_to_json_llm(ocr_text):  # converting outpt text into json via gpt-5
     global _jsonifier_client
 
     if _jsonifier_client is None:
-        _jsonifier_client = OpenAI()
+        # run_batch owns the single visible retry; disable hidden SDK retries.
+        _jsonifier_client = OpenAI(max_retries=0)
 
     response = _jsonifier_client.responses.create(
         model="gpt-5",
@@ -76,7 +77,12 @@ def txt_to_json_llm(ocr_text):  # converting outpt text into json via gpt-5
             }
         },
     )
-    return json.loads(response.output_text)
+    source = (
+        "OpenAI PaddleOCR JSON converter "
+        f"(status={getattr(response, 'status', None)!r}, "
+        f"incomplete_details={getattr(response, 'incomplete_details', None)!r})"
+    )
+    return parse_json_response(response.output_text, source=source)
 
 
 def process_image(image_path):  # paddleocr

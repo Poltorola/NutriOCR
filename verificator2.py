@@ -11,8 +11,12 @@ DEFAULT_REPORT_PATH = PROJECT_DIR / "model_comparison.md"
 
 MODELS = {
     "gpt5": PROJECT_DIR / "results_gpt5",
-    "gemma3_12b": PROJECT_DIR / "results_gemma12b",
-    "gemma3_27b": PROJECT_DIR / "results_gemma27b",
+    "gemma3:12": PROJECT_DIR / "results_gemma3_12",
+    "gemma3:26": PROJECT_DIR / "results_gemma3_26",
+    "gemma4:12": PROJECT_DIR / "results_gemma4_12",
+    "gemma4:26": PROJECT_DIR / "results_gemma4_26",
+    "gemma4:31": PROJECT_DIR / "results_gemma4_31",
+    "gemma4:e4b": PROJECT_DIR / "results_gemma4_e4b",
     "paddle": PROJECT_DIR / "results_json_paddleocr",
 }
 
@@ -95,6 +99,19 @@ def format_value(value):
     return str(value)
 
 
+def processing_time(result):
+    if not isinstance(result, dict):
+        return None
+
+    value = result.get("processing_time_seconds")
+    try:
+        value = float(value)
+    except (TypeError, ValueError):
+        return None
+
+    return value if value >= 0 else None
+
+
 def markdown_table(headers, rows):
     lines = [
         "| " + " | ".join(headers) + " |",
@@ -125,7 +142,13 @@ def build_values_table(verified, model_results):
 def test_model_stats(verified, model_results):
     rows = []
     summary = {
-        model_name: {"full": 0, "correct": 0, "total": 0}
+        model_name: {
+            "full": 0,
+            "correct": 0,
+            "total": 0,
+            "testing_time": 0.0,
+            "timed_tests": 0,
+        }
         for model_name in MODELS
     }
 
@@ -140,6 +163,11 @@ def test_model_stats(verified, model_results):
 
         for model_name in MODELS:
             result = model_results[model_name][test_name]
+            elapsed = processing_time(result)
+            if elapsed is not None:
+                summary[model_name]["testing_time"] += elapsed
+                summary[model_name]["timed_tests"] += 1
+
             correct = sum(
                 values_equal(
                     result_value(result, attribute),
@@ -173,10 +201,21 @@ def build_summary_table(summary, test_count):
             if stats["total"]
             else 0.0
         )
+        if stats["timed_tests"]:
+            average_testing_time = (
+                stats["testing_time"] / stats["timed_tests"]
+            )
+            testing_time = f"{average_testing_time:.2f} s"
+            if stats["timed_tests"] != test_count:
+                testing_time += f" ({stats['timed_tests']}/{test_count} tests)"
+        else:
+            testing_time = "—"
+
         rows.append([
             model_name,
             f"{full_percent:.2f}% ({stats['full']}/{test_count})",
             f"{attribute_percent:.2f}% ({stats['correct']}/{stats['total']})",
+            testing_time,
         ])
 
     return markdown_table(
@@ -184,6 +223,7 @@ def build_summary_table(summary, test_count):
             "model",
             "fully recognized images",
             "correct attributes across all images",
+            "average testing time",
         ],
         rows,
     )

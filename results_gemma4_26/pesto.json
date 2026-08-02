@@ -1,0 +1,29 @@
+{
+  "recognized_text": "200g e\n30ml e\nbarilla.com\nDichiarazione Nutrizionale -\nΔιατροφική Δήλωση - Wartość Odżywcza -\nInformación Nutricional 100 g\nEnergia - Ενέργεια - Wartość energetyczna - Valor energético kJ 1360 kcal 329\nGrassi - Λιπαρά - Grasas - Tłuszcz g 29\ndi cui: Acidi grassi saturi - εκ των οποίων: - de las cuales: Saturadas g 3,4\nCarboidrati - Υδατάνθρακες - Węglowodany - Hidratos de carbono g 12\ndi cui: Zuccheri - εκ των οποίων: σάκχαρα - de los cuales: Azúcares g 7,8\nFibre - Εδώδιμες ίνες - Blonnik - Fibra alimentare g 2,3\nProteine - Πρωτεΐνες - Białko - Proteínas g 3,8\nSale - Αλάτι - Sól - Sal g 2,8\nSENZA GLUTINE / ΧΩΡΙΣ ΓΛΟΥΤΕΝΗ BEZGLUTENOWY / SIN GLUTEN\nBarilla G. e R. Fratelli - Società per Azioni, Via Mantova 166, 43122 Parma (Italy).\n8076809523547",
+  "product_name": null,
+  "company_name": "Barilla G. e R. Fratelli - Società per Azioni",
+  "barcode": "8076809523547",
+  "net_weight_g": 200,
+  "volume_ml": 30,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": 29,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "gemma4:26b-a4b-it-qat",
+  "processing_time_seconds": 9.215,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    9.215
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 497
+  }
+}

@@ -18,8 +18,9 @@ venv/
 Thumbs.db
 
 # Project data
-input_photos/
-results_*/
 
 # Logs
 *.log
+
+# Local secrets
+.env

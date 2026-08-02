@@ -1,17 +1,57 @@
 import base64
 import json
+import logging
+import os
 import time
+from contextlib import contextmanager
 from io import BytesIO
 from pathlib import Path
 
 import cv2
 import numpy as np
+import requests
 from PIL import Image, ImageOps
+from dotenv import load_dotenv
 from tqdm import tqdm
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
+load_dotenv(PROJECT_DIR / ".env")
+
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png"}
+PROCESSING_ATTEMPTS = 2
+
+OLLAMA_BASE_URL = os.getenv(
+    "OLLAMA_BASE_URL", "http://172.19.48.1:11434"
+).rstrip("/")
+LLAMA_CPP_BASE_URL = os.getenv(
+    "LLAMA_CPP_BASE_URL", "http://172.19.48.1:11435"
+).rstrip("/")
+LOCAL_MODEL_REQUEST_TIMEOUT = float(
+    os.getenv("LOCAL_MODEL_REQUEST_TIMEOUT", "900")
+)
+
+
+class _PaddleRoutineMessageFilter(logging.Filter):
+    HIDDEN_MESSAGES = (
+        "Connectivity check to the model hoster has been skipped",
+        "Creating model:",
+        "Model files already exist. Using cached files.",
+        "Special tokens have been added in the vocabulary",
+        "Loading configuration file",
+        "Loading weights file",
+        "Loaded weights file from disk",
+        "All model checkpoint weights were used",
+        "All the weights of",
+        "If your task is similar to the task the model of the checkpoint",
+    )
+
+    def filter(self, record):
+        message = record.getMessage()
+        return not any(text in message for text in self.HIDDEN_MESSAGES)
+
+
+logging.getLogger("paddlex").addFilter(_PaddleRoutineMessageFilter())
 
 # Supported values: "paddle", "custom", "none".
 ROTATION_METHOD = "paddle"
@@ -70,6 +110,349 @@ def measure_runtime(func, *args, **kwargs):
     start = time.perf_counter()
     result = func(*args, **kwargs)
     return result, time.perf_counter() - start
+
+
+def parse_json_response(content, source="Model"):
+    if not isinstance(content, str) or not content.strip():
+        raise ValueError(f"{source} returned an empty response.")
+
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError as error:
+        preview = content.strip()[:500]
+        raise ValueError(
+            f"{source} returned invalid JSON at line {error.lineno}, "
+            f"column {error.colno}: {error.msg}. "
+            f"Response preview: {preview!r}"
+        ) from error
+
+
+def _request_json(method, url, **kwargs):
+    try:
+        response = requests.request(
+            method,
+            url,
+            timeout=kwargs.pop("timeout", 15),
+            **kwargs,
+        )
+    except requests.RequestException as error:
+        raise RuntimeError(f"Could not connect to {url}: {error}") from error
+
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as error:
+        raise RuntimeError(
+            f"HTTP {response.status_code} from {url}: {response.text[:1000]!r}"
+        ) from error
+
+    if not response.content:
+        return {}
+    try:
+        return response.json()
+    except requests.JSONDecodeError as error:
+        raise RuntimeError(
+            f"Invalid JSON from {url}: {response.text[:1000]!r}"
+        ) from error
+
+
+def _ollama_loaded_models(base_url):
+    data = _request_json("GET", f"{base_url}/api/ps")
+    return [item.get("name") or item.get("model") for item in data.get("models", [])]
+
+
+def _llama_cpp_model_states(base_url):
+    """Return [(model_id, state)] for router mode, or a single server state."""
+    try:
+        data = _request_json("GET", f"{base_url}/models")
+    except RuntimeError:
+        data = None
+
+    if isinstance(data, dict) and isinstance(data.get("data"), list):
+        states = []
+        for item in data["data"]:
+            status = item.get("status", {})
+            state = status.get("value") if isinstance(status, dict) else status
+            states.append((item.get("id"), state or "unknown"))
+        return states
+
+    props = _request_json("GET", f"{base_url}/props")
+    state = "sleeping" if props.get("is_sleeping") else "loaded"
+    return [(props.get("model_path") or "llama.cpp model", state)]
+
+
+def ensure_no_local_model_loaded(provider, base_url=None):
+    """Fail before a test rather than competing with a model already in VRAM."""
+    if provider == "ollama":
+        base_url = (base_url or OLLAMA_BASE_URL).rstrip("/")
+        loaded = [name for name in _ollama_loaded_models(base_url) if name]
+    elif provider == "llama_cpp":
+        base_url = (base_url or LLAMA_CPP_BASE_URL).rstrip("/")
+        loaded = [
+            model_id
+            for model_id, state in _llama_cpp_model_states(base_url)
+            if state not in {"unloaded", "sleeping"}
+        ]
+    else:
+        raise ValueError(f"Unknown local model provider: {provider}")
+
+    if loaded:
+        raise RuntimeError(
+            f"Cannot start {provider} test: local model already loaded: "
+            f"{', '.join(loaded)}"
+        )
+
+
+def unload_local_model(provider, model, base_url=None):
+    """Unload model memory while keeping the model server alive."""
+    if provider == "ollama":
+        base_url = (base_url or OLLAMA_BASE_URL).rstrip("/")
+        _request_json(
+            "POST",
+            f"{base_url}/api/generate",
+            json={"model": model, "keep_alive": 0},
+            timeout=60,
+        )
+        return
+
+    if provider == "llama_cpp":
+        base_url = (base_url or LLAMA_CPP_BASE_URL).rstrip("/")
+        try:
+            _request_json(
+                "POST",
+                f"{base_url}/models/unload",
+                json={"model": model},
+                timeout=60,
+            )
+        except RuntimeError as error:
+            raise RuntimeError(
+                "llama-server could not unload the model immediately. Start it "
+                "in router mode (without --model, using --models-dir or "
+                "--models-preset); single-model mode can only unload through "
+                "--sleep-idle-seconds."
+            ) from error
+        return
+
+    raise ValueError(f"Unknown local model provider: {provider}")
+
+
+@contextmanager
+def local_model_session(provider, model, base_url=None):
+    ensure_no_local_model_loaded(provider, base_url=base_url)
+    try:
+        yield
+    finally:
+        unload_local_model(provider, model, base_url=base_url)
+
+
+def _ollama_vision_json(prompt, image_b64, model, schema, context_length, base_url):
+    request_data = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt, "images": [image_b64]}],
+        "format": schema,
+        "options": {"temperature": 0, "num_ctx": context_length},
+        "stream": True,
+    }
+    if model.startswith("gemma4:"):
+        request_data["think"] = False
+
+    response = requests.post(
+        f"{base_url}/api/chat",
+        json=request_data,
+        stream=True,
+        timeout=LOCAL_MODEL_REQUEST_TIMEOUT,
+    )
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as error:
+        raise RuntimeError(
+            f"Ollama HTTP {response.status_code}: {response.text[:500]!r}"
+        ) from error
+
+    response_parts = []
+    thinking_chars = 0
+    done_received = False
+    done_reason = None
+    metadata = {}
+    for raw_line in response.iter_lines():
+        if not raw_line:
+            continue
+        try:
+            line = raw_line.decode("utf-8")
+        except UnicodeDecodeError as error:
+            raise RuntimeError(
+                f"Ollama returned a non-UTF-8 streaming event: "
+                f"{raw_line[:200]!r}"
+            ) from error
+        try:
+            data = json.loads(line)
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                f"Ollama returned an invalid streaming event: {line[:500]!r}"
+            ) from error
+        if data.get("error"):
+            raise RuntimeError(f"Ollama error: {data['error']}")
+
+        message = data.get("message", {})
+        response_parts.append(message.get("content", ""))
+        thinking_chars += len(message.get("thinking", ""))
+        if data.get("done"):
+            done_received = True
+            done_reason = data.get("done_reason")
+            metadata = {
+                "prompt_tokens": data.get("prompt_eval_count", 0),
+                "output_tokens": data.get("eval_count", 0),
+            }
+
+    source = (
+        f"Ollama model {model} (done_received={done_received}, "
+        f"done_reason={done_reason!r}, thinking_chars={thinking_chars})"
+    )
+    return parse_json_response("".join(response_parts), source=source), metadata
+
+
+def _llama_cpp_vision_json(prompt, image_b64, model, schema, base_url):
+    request_data = {
+        "model": model,
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/jpeg;base64,{image_b64}"},
+                    },
+                ],
+            }
+        ],
+        "temperature": 0,
+        "stream": True,
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "nutrition_label",
+                "strict": True,
+                "schema": schema,
+            },
+        },
+    }
+    response = requests.post(
+        f"{base_url}/v1/chat/completions",
+        json=request_data,
+        stream=True,
+        timeout=LOCAL_MODEL_REQUEST_TIMEOUT,
+    )
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as error:
+        raise RuntimeError(
+            f"llama-server HTTP {response.status_code}: {response.text[:1000]!r}"
+        ) from error
+
+    response_parts = []
+    finish_reason = None
+    usage = {}
+    for raw_line in response.iter_lines():
+        if not raw_line:
+            continue
+        try:
+            line = raw_line.decode("utf-8")
+        except UnicodeDecodeError as error:
+            raise RuntimeError(
+                f"llama-server returned a non-UTF-8 SSE event: "
+                f"{raw_line[:200]!r}"
+            ) from error
+        if line.startswith(":"):
+            continue
+        if line.startswith("data:"):
+            line = line[5:].strip()
+        if line == "[DONE]":
+            break
+        try:
+            data = json.loads(line)
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                f"llama-server returned an invalid SSE event: {line[:500]!r}"
+            ) from error
+        if data.get("error"):
+            raise RuntimeError(f"llama-server error: {data['error']}")
+        for choice in data.get("choices", []):
+            response_parts.append(choice.get("delta", {}).get("content") or "")
+            finish_reason = choice.get("finish_reason") or finish_reason
+        usage = data.get("usage") or usage
+
+    metadata = {
+        "prompt_tokens": usage.get("prompt_tokens", 0),
+        "output_tokens": usage.get("completion_tokens", 0),
+    }
+    source = f"llama-server model {model} (finish_reason={finish_reason!r})"
+    return parse_json_response("".join(response_parts), source=source), metadata
+
+
+def infer_local_vision_json(
+    *, prompt, image_b64, provider, model, schema, context_length=16_384,
+    base_url=None,
+):
+    """Common local vision inference entry point for Ollama and llama.cpp."""
+    if provider == "ollama":
+        return _ollama_vision_json(
+            prompt,
+            image_b64,
+            model,
+            schema,
+            context_length,
+            (base_url or OLLAMA_BASE_URL).rstrip("/"),
+        )
+    if provider == "llama_cpp":
+        return _llama_cpp_vision_json(
+            prompt,
+            image_b64,
+            model,
+            schema,
+            (base_url or LLAMA_CPP_BASE_URL).rstrip("/"),
+        )
+    raise ValueError(f"Unknown local model provider: {provider}")
+
+
+def format_exception_chain(error):
+    parts = []
+    seen = set()
+    current = error
+
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+        message = str(current).strip()
+        part = type(current).__name__
+        if message:
+            part += f": {message}"
+        parts.append(part)
+        current = current.__cause__ or current.__context__
+
+    return " <- ".join(parts)
+
+
+def exception_request_id(error):
+    seen = set()
+    current = error
+
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+
+        for attribute in ("request_id", "_request_id"):
+            request_id = getattr(current, attribute, None)
+            if request_id:
+                return request_id
+
+        response = getattr(current, "response", None)
+        headers = getattr(response, "headers", None)
+        if headers:
+            request_id = headers.get("x-request-id")
+            if request_id:
+                return request_id
+
+        current = current.__cause__ or current.__context__
+
+    return None
 
 
 def rotate_image(image, degrees):
@@ -258,25 +641,104 @@ def run_batch(
     output_dir.mkdir(parents=True, exist_ok=True)
     timing_results = {}
 
-    for image_path in tqdm(iter_image_paths(input_dir)):
-        try:
-            (result, metadata), elapsed = measure_runtime(
-                process_image,
-                image_path,
-            )
+    image_paths = iter_image_paths(input_dir)
+    progress = tqdm(
+        image_paths,
+        desc=model_name,
+        unit="image",
+        dynamic_ncols=True,
+    )
 
-            if isinstance(result, dict):
-                result.setdefault("image", image_path.name)
-                result.setdefault("model", model_name)
+    for image_number, image_path in enumerate(progress, start=1):
+        tqdm.write(
+            f"[{model_name}] Processing {image_path.name} "
+            f"({image_number}/{len(image_paths)})..."
+        )
+        result = None
+        metadata = {}
+        last_error = None
+        elapsed = 0.0
+        completed_attempts = 0
+        attempt_durations = []
 
-            save_result(result, image_path, output_dir)
-            timing_results[image_path.name] = {
-                "elapsed": elapsed,
-                **metadata,
+        for attempt in range(1, PROCESSING_ATTEMPTS + 1):
+            completed_attempts = attempt
+            started_at = time.perf_counter()
+            try:
+                result, metadata = process_image(image_path)
+                attempt_elapsed = time.perf_counter() - started_at
+                attempt_durations.append(round(attempt_elapsed, 3))
+                elapsed += attempt_elapsed
+                last_error = None
+                if attempt > 1:
+                    tqdm.write(
+                        f"Retry succeeded for {image_path.name} in "
+                        f"{attempt_elapsed:.2f} seconds "
+                        f"({elapsed:.2f} seconds total)."
+                    )
+                break
+            except Exception as error:
+                attempt_elapsed = time.perf_counter() - started_at
+                attempt_durations.append(round(attempt_elapsed, 3))
+                elapsed += attempt_elapsed
+                last_error = error
+                error_text = format_exception_chain(error)
+                tqdm.write(
+                    f"Failed {image_path.name} "
+                    f"(attempt {attempt}/{PROCESSING_ATTEMPTS}, "
+                    f"{attempt_elapsed:.2f} seconds; "
+                    f"{elapsed:.2f} seconds total): {error_text}"
+                )
+                if attempt < PROCESSING_ATTEMPTS:
+                    tqdm.write(f"Retrying {image_path.name}...")
+
+        if last_error is not None:
+            error_text = format_exception_chain(last_error)
+            request_id = exception_request_id(last_error)
+            result = {
+                "image": image_path.name,
+                "model": model_name,
+                "processing_time_seconds": round(elapsed, 3),
+                "processing_attempts": completed_attempts,
+                "processing_attempt_durations_seconds": attempt_durations,
+                "openai_request_id": request_id,
+                "error": error_text,
             }
-            print(f"Processed {image_path.name}: {elapsed:.2f} seconds")
+            metadata = {
+                "status": "failed",
+                "openai_request_id": request_id,
+                "error": error_text,
+            }
+            tqdm.write(
+                f"Giving up on {image_path.name}; saving the error result."
+            )
+        elif isinstance(result, dict):
+            result.setdefault("image", image_path.name)
+            result.setdefault("model", model_name)
+            result["processing_time_seconds"] = round(elapsed, 3)
+            result["processing_attempts"] = completed_attempts
+            result["processing_attempt_durations_seconds"] = attempt_durations
+            if metadata:
+                result["processing_metadata"] = metadata
+
+        try:
+            save_result(result, image_path, output_dir)
         except Exception as error:
-            print(f"Failed: {image_path.name}: {error}")
+            tqdm.write(
+                f"Could not save {image_path.name}: "
+                f"{format_exception_chain(error)}"
+            )
+            continue
+
+        timing_results[image_path.name] = {
+            "elapsed": elapsed,
+            **metadata,
+        }
+        if last_error is None:
+            tqdm.write(
+                f"[{model_name}] Processed {image_path.name}: "
+                f"{elapsed:.2f} seconds"
+            )
 
     write_timing_report(scores_file, model_name, timing_results)
     return timing_results

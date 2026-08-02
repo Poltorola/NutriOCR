@@ -1,0 +1,29 @@
+{
+  "recognized_text": "белки белоктар 7.4 г\nжиры майлар 16.1 г\nуглеводы көмірсулар 56.2 г\nпищевые волокна тағамдық талшықтар 3.6 г\nЭнергетическая ценность на 100 г: 398 ккал / 1666 кДж.\n«ЗДОРОВОЕ ПИТАНИЕ», Россия, 630553, Новосибирская область, Новосибирский район, село Новолуговоe, улица Советская, дом 9A.",
+  "product_name": null,
+  "company_name": "ЗДОРОВОЕ ПИТАНИЕ",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 398,
+    "protein_g": 7.4,
+    "fat_g": 16.1,
+    "saturated_fat_g": null,
+    "carbs_g": 56.2,
+    "sugars_g": null,
+    "fiber_g": 3.6,
+    "salt_g": null
+  },
+  "image": "cookie.jpg",
+  "model": "gemma4:31b-it-qat",
+  "processing_time_seconds": 84.803,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    84.803
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 269
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "recognized_text": "100 г. өнімнің құрамы. Содержание в 100 г продукта.\nмай/жир\nақуыз/белок\nкөмірсу/углеводы\nЭнергетикалық құндылық\nЭнергетическая ценность\n4,7г\n2,8г\n3,2г\n246 кДж/59 ккал\nСақтау шарттары / Условия хранения:\n+25°C - +40°C\nКөлемі/\nОбъем/\n925 мл.",
+  "product_name": "Корейский",
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 925,
+  "nutrition": {
+    "kcal": 59,
+    "protein_g": 2.8,
+    "fat_g": 4.7,
+    "saturated_fat_g": null,
+    "carbs_g": 3.2,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "milk.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 359.374,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    351.994,
+    7.379
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 259
+  }
+}

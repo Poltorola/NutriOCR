@@ -1,0 +1,29 @@
+{
+  "recognized_text": "COCONUT CREAM (РАСТИТЕЛЬНЫХ ЖИРОВ 24%) Объем: 150 мл Может заметить молочные сливки при готовке. Подходит для добавления в кофе. Состав: переработанная кокосовая мякоть, вода, стабилизаторы (ксантановая камедь, каррагинан). Питательная ценность 100 грамм: Белки: 2.8, Жиры: 24, Углеводы: 24, Энергетическая ценность: 237 ккал. Дата изготовления (PRO) указана на верхней части упаковки. Изготовитель: Viet World Company Limited. Адрес: Lot A5, A6, A7, A8, Giao Long Industrial Area, Giao Long, Vinh, Vietnam.",
+  "product_name": "COCONUT CREAM (РАСТИТЕЛЬНЫХ ЖИРОВ 24%)",
+  "company_name": "Viet World Company Limited",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 150,
+  "nutrition": {
+    "kcal": 237,
+    "protein_g": 2.8,
+    "fat_g": 24,
+    "saturated_fat_g": null,
+    "carbs_g": 24,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "cocomilk.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 13.827,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    13.827
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

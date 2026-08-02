@@ -1,0 +1,29 @@
+{
+  "recognized_text": "белки\nбелок\n7.4 г\nжиры\nнасыщ.\n16.1 г\nуглеводы\nкөмерсуд\n50.2 г\nпищевые\nволокн\nсаңыр\n3.6 г\nЭнергетическая ценность на 100 г.\n/998 ккал / 1666 кДж.",
+  "product_name": null,
+  "company_name": "ОЗОРОФЕ ПИТАНИЕ",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 998,
+    "protein_g": 7.4,
+    "fat_g": 16.1,
+    "saturated_fat_g": null,
+    "carbs_g": 50.2,
+    "sugars_g": null,
+    "fiber_g": 3.6,
+    "salt_g": null
+  },
+  "image": "cookie.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 6.598,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    6.598
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 230
+  }
+}

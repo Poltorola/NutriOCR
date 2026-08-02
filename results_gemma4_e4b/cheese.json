@@ -1,0 +1,29 @@
+{
+  "recognized_text": "President Сыр Чечил белый. МАССА НЕТТО 100 г. Nutrition Table (Per 100g): Energy (kJ/kcal), Fat (Жиры), Carbohydrates (Углеводы), Protein (Белки), Saturated Fat (Насыщенные жиры), Sugars (Сахара), Fiber (Клетчатка), Salt (Соль).",
+  "product_name": "Сыр Чечил белый",
+  "company_name": "President",
+  "barcode": "60702261729",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 350,
+    "protein_g": 20,
+    "fat_g": 25,
+    "saturated_fat_g": 10,
+    "carbs_g": 2,
+    "sugars_g": 1,
+    "fiber_g": 0,
+    "salt_g": 1.5
+  },
+  "image": "cheese.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 12.074,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    12.074
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

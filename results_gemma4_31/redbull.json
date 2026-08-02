@@ -1,0 +1,29 @@
+{
+  "recognized_text": "RED BULL® Sugarfree (Ҡед Булл 6ез сахаркерв)\nонимпольный тоникирующий газированный напиток\nКазахстан, 050012, а. Алматы, ул. Муртбаева 180, офис... 505, тел. 8-800-800-5023.\n0.25l e\n9 002490 2070434\nПищеватель: на 100 мл: Энергетическая ценность: 85 кДж / 20 ккал, Белки: 0 г, Жиры: 0 г, Углеводы: 5 г, из них сахара: 0 г. Саль: 0 г.",
+  "product_name": "RED BULL Sugarfree",
+  "company_name": null,
+  "barcode": "90024902070434",
+  "net_weight_g": null,
+  "volume_ml": 250,
+  "nutrition": {
+    "kcal": 20,
+    "protein_g": 0,
+    "fat_g": 0,
+    "saturated_fat_g": null,
+    "carbs_g": 5,
+    "sugars_g": 0,
+    "fiber_g": null,
+    "salt_g": 0
+  },
+  "image": "redbull.jpg",
+  "model": "gemma4:31b-it-qat",
+  "processing_time_seconds": 286.293,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    286.293
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 929
+  }
+}

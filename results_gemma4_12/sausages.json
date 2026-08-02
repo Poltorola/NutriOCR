@@ -1,0 +1,12 @@
+{
+  "image": "sausages.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 710.16,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    356.218,
+    353.941
+  ],
+  "openai_request_id": null,
+  "error": "ValueError: Ollama model gemma4:12b (done_received=True, done_reason='length', thinking_chars=0) returned invalid JSON at line 2, column 22: Unterminated string starting at. Response preview: '{\\n  \"recognized_text\": \"НЕОБЕВОРЕННИЙ ПРОДУКТ. МОЛОЧНЕ КОНЦЕНТРАТIВНЕ БАВНЯНЕ\\\\nПИТТЯ. В СУМПІШІ, СУШИВОНЕ, МАСЦА НЕТТО 40 Г.\\\\n\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕРЕЖНО! ПРОДУКТ ВИРОБЛЕНИЙ ДЛЯ ВІДКОРЕННЯ.\\\\nОБЕР' <- JSONDecodeError: Unterminated string starting at: line 2 column 22 (char 23)"
+}

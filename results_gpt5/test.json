@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Coke\n4x250ml e bottles\nSparkling Soft Drink with Vegetable Extracts\nIngredients: Carbonated Water, Sugar, Colour (Caramel E150d), Phosphoric Acid, Natural Flavourings Including Caffeine.\nBest before end: See crown or bottle neck for date.\nStore cool and dry.\nThis pack is intended for sale as one complete unit\nThis multipack contains 4x250ml bottles.\n\nNUTRITION INFORMATION TYPICAL VALUES\nPer: 100ml | 250ml (%)\nEnergy: 180kJ 42kcal | 450kJ 105kcal\nFat: 0g | 0g\nof which saturates: 0g | 0g\nCarbohydrate: 10.6g | 27g\nof which sugars: 10.6g | 27g\nProtein: 0g | 0g\nSalt: 0g | 0g\n\nCoca-Cola European Partners Great Britain Limited, Uxbridge UB8 1EZ\n0800 227711\nCoca-Cola Classic",
+  "product_name": "Coca-Cola Classic",
+  "company_name": "Coca-Cola European Partners Great Britain Limited",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 1000,
+  "nutrition": {
+    "kcal": 42,
+    "protein_g": 0,
+    "fat_g": 0,
+    "saturated_fat_g": 0,
+    "carbs_g": 10.6,
+    "sugars_g": 10.6,
+    "fiber_g": null,
+    "salt_g": 0
+  },
+  "image": "test.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 34.89,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    34.89
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.03,
+    "model_response_seconds": 34.86,
+    "time_to_first_event_seconds": 0.939,
+    "time_to_first_text_seconds": 30.128,
+    "stream_event_count": 337,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_0679d1959689413b9517946d808c897a",
+    "openai_response_id": "resp_097b4ef0dbd1a0b8006a6ece2f25788199bd5fe3ffc7ac55c9",
+    "input_tokens": 1778,
+    "output_tokens": 2319,
+    "total_tokens": 4097
+  }
+}

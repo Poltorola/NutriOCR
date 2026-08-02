@@ -1,0 +1,39 @@
+{
+  "recognized_text": "Масса нетто: 520 г\nПищевая ценность на 100 г продукции:\nбелки 1,3 г,\nуглеводы 7,2 г,\nжиры 0,1 г,\nЭнергетическая ценность на 100 г продукции: 35 ккал / 140 кДж\nНе содержит ГМО, химических вкусовых добавок, произведено без химии и консервантов.\n100% натуральный эко продукт",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": 520,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 35,
+    "protein_g": 1.3,
+    "fat_g": 0.1,
+    "saturated_fat_g": null,
+    "carbs_g": 7.2,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "carrots.jpg",
+  "model": "gpt-5",
+  "processing_time_seconds": 40.093,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    40.093
+  ],
+  "processing_metadata": {
+    "image_preparation_seconds": 0.143,
+    "model_response_seconds": 39.95,
+    "time_to_first_event_seconds": 1.053,
+    "time_to_first_text_seconds": 38.049,
+    "stream_event_count": 202,
+    "stream_last_event": "response.completed",
+    "json_parsing_seconds": 0.0,
+    "openai_request_id": "req_c81466cf86764d528da803c66a37554d",
+    "openai_response_id": "resp_0eca9d6d1c187bde006a6ecc6a6034819891ecbd2a09f6ab58",
+    "input_tokens": 1778,
+    "output_tokens": 2387,
+    "total_tokens": 4165
+  }
+}

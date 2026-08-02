@@ -1,0 +1,12 @@
+{
+  "image": "redbull.jpg",
+  "model": "gemma4:26b-a4b-it-qat",
+  "processing_time_seconds": 455.669,
+  "processing_attempts": 2,
+  "processing_attempt_durations_seconds": [
+    226.144,
+    229.525
+  ],
+  "openai_request_id": null,
+  "error": "ValueError: Ollama model gemma4:26b-a4b-it-qat (done_received=True, done_reason='length', thinking_chars=0) returned invalid JSON at line 1, column 21: Unterminated string starting at. Response preview: '{\"recognized_text\": \"0,25 л\\\\nEHL\\\\n9 002490\\\\\"207434\\\\\"\\\\nALU\\\\n505, тен. 8-800-5023.\\\\nул. Муртазаева, 180, Алматы,\\\\nКазахстан; Республика\\\\nКазахстан; Qaz\\\\nпредставитель: ТОО \\\\\"Red Bull\\\\\"\\\\nИмпортозаменитель:\\\\n(Бул Гиб) (Ай Барукан, 1,530, Фулл-эм-386, Астана,\\\\nНазарбаевтану, Район; Туран; по заказу Red Bull\\\\nRed Bull Sugarfree (Ред Булл без сахара)\\\\n(Бул Гиб) (Ай Барукан, 1,530, Фулл-эм-386, Астана,\\\\nНазарбаевтану, Район; Туран; по заказу Red Bull\\\\nRed Bull Sugarfree (Ред Булл без сахара)\\\\n(Бул Гиб) ' <- JSONDecodeError: Unterminated string starting at: line 1 column 21 (char 20)"
+}

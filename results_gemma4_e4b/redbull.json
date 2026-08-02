@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Bull Sugarcane\n0.25 kg\n00249020202020202020\nЭнергетическая ценность\nКкал\nБелки\nЖиры\nУглеводы\nНасыщенные жиры\nСахара\nКлетчатка\nСоль\n380\n0.5\n0.0\n95.0\n0.0\n90.0\n1.0\n0.0",
+  "product_name": "Bull Sugarcane",
+  "company_name": null,
+  "barcode": "00249020202020202020",
+  "net_weight_g": 250,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 380,
+    "protein_g": 0.5,
+    "fat_g": 0.0,
+    "saturated_fat_g": 0.0,
+    "carbs_g": 95.0,
+    "sugars_g": 90.0,
+    "fiber_g": 1.0,
+    "salt_g": 0.0
+  },
+  "image": "redbull.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 17.583,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    17.583
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

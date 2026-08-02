@@ -9,7 +9,7 @@ Made by Olga Dobler, OPIT BCs in Computer Science student.
 - PaddleOCR 3.3.3 (PPStructureV3)
 - PaddlePaddle 3.2.0 (CPU config)
 - OpenAI Vision API (gpt-5)
-- Ollama (Gemma3 Vision, 12b, 27b)
+- Ollama (Gemma3/Gemma4 Vision)
 
 # Hardware
 
@@ -25,7 +25,7 @@ Working text recognition pipeline
 Current functionality:
 - Process food label images
 - Extract text using PaddleOCR (on CPU) / Gemma12b & Gemma72b (on GPU) / gpt-5 (via openAI API)
-Source files: ocr_paddle.py ocr_gemma3.py ocr_gpt5.py
+Source files: ocr_paddle.py orc_gemma.py ocr_gpt5.py
 - Save the results into json files
 - For PaddleOCR: converts .md output into json 
 Source file: jsonifier.py

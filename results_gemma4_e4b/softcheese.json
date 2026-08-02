@@ -1,0 +1,29 @@
+{
+  "recognized_text": "170 g",
+  "product_name": null,
+  "company_name": null,
+  "barcode": null,
+  "net_weight_g": 170,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": null,
+    "protein_g": null,
+    "fat_g": null,
+    "saturated_fat_g": null,
+    "carbs_g": null,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "softcheese.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 16.514,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    16.514
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}

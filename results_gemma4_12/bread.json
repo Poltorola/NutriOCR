@@ -1,0 +1,29 @@
+{
+  "recognized_text": "пищевая ценность на 100 г продукта*, белки - 7,0 г, жиры - 2,0 г, углеводы - 60,0 г. энергетическая ценность на 100 г продукта, продукт - 1300 кДж / 310 ккал. Производитель: ООО \"Хлебпром\", местонахождение: Россия, 490014, Кемеловская область, г. Кеменово, ул. Молодогвардейцев, д. 2А. Пищевая ценность одного хлеба: белки - 5,7 г, углеводы - 6,1 г, жиры - 0,2 г, углеводов - 5,7 г.",
+  "product_name": "Dr. Körner",
+  "company_name": "ООО \"Хлебпром\"",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 310,
+    "protein_g": 7.0,
+    "fat_g": 2.0,
+    "saturated_fat_g": null,
+    "carbs_g": 60.0,
+    "sugars_g": null,
+    "fiber_g": null,
+    "salt_g": null
+  },
+  "image": "bread.jpg",
+  "model": "gemma4:12b",
+  "processing_time_seconds": 24.162,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    24.162
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 1016,
+    "output_tokens": 334
+  }
+}

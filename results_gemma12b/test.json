@@ -1,0 +1,20 @@
+{
+  "recognized_text": "Coke.\n4x250ml bottles\nSparkling Soft Drink with Vegetable Extracts\nIngredients: Carbonated Water, Sugar, Colour (Caramel E150d), Phosphoric Acid,\nNatural Flavourings Including Caffeine.\nBest before end: See crown or bottle neck for date.\nStore cool and dry.\nThis pack is intended for sale as one complete unit.\nThis multipack contains 4x250ml bottles.\nNUTRITION INFORMATION TYPICAL VALUES\nPer. 100ml 250ml (%)\nEnergy: 180kJ/ 450kJ (52)\n   42kcal 105kcal (5%)\nFat: 0g 0g (0%)\nof which saturates: 0g 0g (0%)\nCarbohydrate: 10.4g 27g (107%)\nof which sugars: 10.4g 27g (297%)\nProtein: 0g 0g (0%)\nSalt: 0g 0g (0%)\n*Reference intake of an average adult\n(8400kJ/2000kcal).\nCoca-Cola European\nPartners Great\nBritain Limited.\nUxbridge UB8 1EZ\n0800 2277111\nWidely",
+  "product_name": "Coke",
+  "company_name": "Coca-Cola European Partners Great Britain Limited",
+  "barcode": null,
+  "net_weight_g": null,
+  "volume_ml": 1000,
+  "nutrition": {
+    "kcal": 105,
+    "protein_g": 0.0,
+    "fat_g": 0.0,
+    "saturated_fat_g": 0.0,
+    "carbs_g": 27.0,
+    "sugars_g": 27.0,
+    "fiber_g": null,
+    "salt_g": 0.0
+  },
+  "image": "test.jpg",
+  "model": "gemma3:12b-it-q8_0"
+}

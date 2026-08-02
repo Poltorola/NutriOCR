@@ -1,0 +1,29 @@
+{
+  "recognized_text": "Dichiarazione Nutrizionale\nInformacja Odżywcza\nΔιατροφική Δήλωση\nInformación Nutricional\nEnergy\nProteine\nFat\nCarbohydrates\nSaturated Fat\nSugars\nFiber\nSalt\nBarella G. e Fratelli - Società Azioni, Via Mantova 166, Parma 43122 (Italy)",
+  "product_name": null,
+  "company_name": "Barella G. e Fratelli - Società Azioni, Via Mantova 166, Parma 43122 (Italy)",
+  "barcode": "0768095234",
+  "net_weight_g": 100,
+  "volume_ml": null,
+  "nutrition": {
+    "kcal": 329,
+    "protein_g": 3.8,
+    "fat_g": 9.4,
+    "saturated_fat_g": 3.4,
+    "carbs_g": 12.0,
+    "sugars_g": 7.8,
+    "fiber_g": 2.3,
+    "salt_g": 2.8
+  },
+  "image": "pesto.jpg",
+  "model": "gemma4:E4B",
+  "processing_time_seconds": 14.123,
+  "processing_attempts": 1,
+  "processing_attempt_durations_seconds": [
+    14.123
+  ],
+  "processing_metadata": {
+    "prompt_tokens": 0,
+    "output_tokens": 0
+  }
+}
